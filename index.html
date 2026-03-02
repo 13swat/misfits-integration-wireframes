@@ -372,14 +372,16 @@
 
 <nav class="wireframe-nav">
   <span style="margin-right: 12px; opacity: 0.7;">Misfits + Plans:</span>
-  <a href="#" onclick="showScreen('misfits-home')" id="nav-misfits-home" class="active">1. Home</a>
-  <a href="#" onclick="showScreen('clubs-tab')" id="nav-clubs-tab">2. Clubs</a>
-  <a href="#" onclick="showScreen('club-meetups')" id="nav-club-meetups">3. Club Meetups</a>
-  <a href="#" onclick="showScreen('meetup-detail')" id="nav-meetup-detail">4. Meetup Detail</a>
-  <a href="#" onclick="showScreen('create-linked-plan')" id="nav-create-linked-plan">5. Create Crew</a>
-  <a href="#" onclick="showScreen('linked-plan')" id="nav-linked-plan">6. Crew Plan</a>
-  <a href="#" onclick="showScreen('friend-invite')" id="nav-friend-invite">7. Friend Invite</a>
-  <a href="#" onclick="showScreen('my-plans')" id="nav-my-plans">8. My Plans</a>
+  <a href="#" onclick="showScreen('misfits-home')" id="nav-misfits-home" class="active">Home</a>
+  <a href="#" onclick="showScreen('clubs-tab')" id="nav-clubs-tab">Clubs</a>
+  <a href="#" onclick="showScreen('club-meetups')" id="nav-club-meetups">Club Meetups</a>
+  <a href="#" onclick="showScreen('meetup-detail')" id="nav-meetup-detail">Meetup</a>
+  <a href="#" onclick="showScreen('create-linked-plan')" id="nav-create-linked-plan">Crew Plan</a>
+  <a href="#" onclick="showScreen('linked-plan')" id="nav-linked-plan">View Crew</a>
+  <a href="#" onclick="showScreen('my-plans')" id="nav-my-plans">My Plans</a>
+  <a href="#" onclick="showScreen('create-plan')" id="nav-create-plan">Create Plan</a>
+  <a href="#" onclick="showScreen('browse-templates')" id="nav-browse-templates">Templates</a>
+  <a href="#" onclick="showScreen('template-detail')" id="nav-template-detail">Template</a>
 </nav>
 
 <div class="phone-frame">
@@ -1382,7 +1384,7 @@
 
       <!-- Create Plan -->
       <div style="margin-top: 24px;">
-        <button class="btn btn-primary clickable">+ Create New Plan</button>
+        <button class="btn btn-primary clickable" onclick="showScreen('create-plan')">+ Create New Plan</button>
         <p style="text-align: center; font-size: 12px; color: #666; margin-top: 8px;">
           Plan something with friends or use a template
         </p>
@@ -1394,7 +1396,7 @@
         <div class="tab-icon"></div>
         <span>Home</span>
       </div>
-      <div class="tab-item clickable">
+      <div class="tab-item clickable" onclick="showScreen('clubs-tab')">
         <div class="tab-icon"></div>
         <span>Clubs</span>
       </div>
@@ -1402,10 +1404,383 @@
         <div class="tab-icon"></div>
         <span>My Plans</span>
       </div>
-      <div class="tab-item clickable">
+      <div class="tab-item clickable" onclick="showScreen('browse-templates')">
         <div class="tab-icon"></div>
         <span>Explore</span>
       </div>
+    </div>
+  </div>
+
+  <!-- Screen 9: Create Plan (Start Fresh or Use Template) -->
+  <div class="screen" id="create-plan">
+    <div class="status-bar">9:41</div>
+    <div class="header header-with-back">
+      <div class="back-btn clickable" onclick="showScreen('my-plans')">←</div>
+      <h1 style="font-size: 20px;">Create a Plan</h1>
+    </div>
+    <div class="content">
+      <!-- How do you want to start -->
+      <p style="font-size: 14px; color: #666; margin-bottom: 20px;">How would you like to create your plan?</p>
+
+      <!-- Start from Scratch -->
+      <div class="card clickable" style="padding: 20px; margin-bottom: 12px; border: 2px solid #eee;">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #FF6B35, #FF8C42); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+            ✨
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 17px; margin-bottom: 4px;">Start from Scratch</h3>
+            <p style="font-size: 13px; color: #666;">Create your own custom plan with your own tasks and timeline</p>
+          </div>
+          <span style="color: #999; font-size: 18px;">›</span>
+        </div>
+      </div>
+
+      <!-- Use a Template -->
+      <div class="card clickable" onclick="showScreen('browse-templates')" style="padding: 20px; margin-bottom: 12px; border: 2px solid #FF6B35; background: #fff8f5;">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #5856D6, #AF52DE); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+            📋
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 17px; margin-bottom: 4px; color: #FF6B35;">Use a Template</h3>
+            <p style="font-size: 13px; color: #666;">Get step-by-step guidance with pre-made plans</p>
+            <span style="display: inline-block; background: #FF6B35; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; margin-top: 4px;">RECOMMENDED</span>
+          </div>
+          <span style="color: #FF6B35; font-size: 18px;">›</span>
+        </div>
+      </div>
+
+      <!-- Popular Templates Preview -->
+      <div class="section-header" style="margin-top: 24px;">
+        <h2>Popular Templates</h2>
+        <a href="#" onclick="showScreen('browse-templates')">See all</a>
+      </div>
+
+      <div style="display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px;">
+        <div class="card clickable" onclick="showScreen('template-detail')" style="min-width: 140px; padding: 12px;">
+          <div style="font-size: 32px; margin-bottom: 8px;">🎂</div>
+          <div style="font-size: 13px; font-weight: 600;">Birthday Party</div>
+          <div style="font-size: 11px; color: #666;">12 tasks</div>
+          <div style="font-size: 11px; color: #34C759; margin-top: 4px;">Free</div>
+        </div>
+        <div class="card clickable" onclick="showScreen('template-detail')" style="min-width: 140px; padding: 12px;">
+          <div style="font-size: 32px; margin-bottom: 8px;">🏕️</div>
+          <div style="font-size: 13px; font-weight: 600;">Camping Trip</div>
+          <div style="font-size: 11px; color: #666;">18 tasks</div>
+          <div style="font-size: 11px; color: #34C759; margin-top: 4px;">Free</div>
+        </div>
+        <div class="card clickable" onclick="showScreen('template-detail')" style="min-width: 140px; padding: 12px;">
+          <div style="font-size: 32px; margin-bottom: 8px;">🎉</div>
+          <div style="font-size: 13px; font-weight: 600;">House Party</div>
+          <div style="font-size: 11px; color: #666;">15 tasks</div>
+          <div style="font-size: 11px; color: #34C759; margin-top: 4px;">Free</div>
+        </div>
+      </div>
+
+      <!-- Quick Plan Types -->
+      <div class="section-header" style="margin-top: 24px;">
+        <h2>What are you planning?</h2>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <div class="clickable" style="background: #f5f5f5; padding: 10px 16px; border-radius: 20px; font-size: 13px;">🎂 Birthday</div>
+        <div class="clickable" style="background: #f5f5f5; padding: 10px 16px; border-radius: 20px; font-size: 13px;">🍕 Dinner</div>
+        <div class="clickable" style="background: #f5f5f5; padding: 10px 16px; border-radius: 20px; font-size: 13px;">🏖️ Trip</div>
+        <div class="clickable" style="background: #f5f5f5; padding: 10px 16px; border-radius: 20px; font-size: 13px;">🎬 Movie Night</div>
+        <div class="clickable" style="background: #f5f5f5; padding: 10px 16px; border-radius: 20px; font-size: 13px;">🎮 Game Night</div>
+        <div class="clickable" style="background: #f5f5f5; padding: 10px 16px; border-radius: 20px; font-size: 13px;">🏋️ Fitness</div>
+        <div class="clickable" style="background: #f5f5f5; padding: 10px 16px; border-radius: 20px; font-size: 13px;">📚 Study</div>
+        <div class="clickable" style="background: #f5f5f5; padding: 10px 16px; border-radius: 20px; font-size: 13px;">🎸 Concert</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 10: Browse Templates -->
+  <div class="screen" id="browse-templates">
+    <div class="status-bar">9:41</div>
+    <div class="header header-with-back">
+      <div class="back-btn clickable" onclick="showScreen('create-plan')">←</div>
+      <h1 style="font-size: 20px;">Fun Templates</h1>
+    </div>
+    <div class="content">
+      <!-- Search -->
+      <div style="margin-bottom: 16px;">
+        <input type="text" placeholder="Search templates..." style="width: 100%; padding: 12px 16px; border: 1px solid #eee; border-radius: 12px; font-size: 14px;">
+      </div>
+
+      <!-- Categories -->
+      <div style="display: flex; gap: 8px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 4px;">
+        <span style="background: #FF6B35; color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; white-space: nowrap;">All</span>
+        <span style="background: #f5f5f5; color: #666; padding: 8px 16px; border-radius: 20px; font-size: 12px; white-space: nowrap;">🎉 Parties</span>
+        <span style="background: #f5f5f5; color: #666; padding: 8px 16px; border-radius: 20px; font-size: 12px; white-space: nowrap;">🏕️ Trips</span>
+        <span style="background: #f5f5f5; color: #666; padding: 8px 16px; border-radius: 20px; font-size: 12px; white-space: nowrap;">🍕 Food</span>
+        <span style="background: #f5f5f5; color: #666; padding: 8px 16px; border-radius: 20px; font-size: 12px; white-space: nowrap;">🎮 Fun</span>
+      </div>
+
+      <!-- Featured Template -->
+      <div class="card clickable" onclick="showScreen('template-detail')" style="margin-bottom: 16px; border: 2px solid #FF6B35; overflow: hidden;">
+        <div style="background: linear-gradient(135deg, #FF6B35, #FF8C42); padding: 16px; margin: -16px -16px 12px -16px;">
+          <span style="background: white; color: #FF6B35; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;">FEATURED</span>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <div style="font-size: 40px;">🎂</div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 17px; margin-bottom: 4px;">Ultimate Birthday Party</h3>
+            <p style="font-size: 12px; color: #666; margin-bottom: 6px;">Everything you need to throw an unforgettable birthday bash</p>
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span style="font-size: 11px; color: #666;">📋 12 tasks</span>
+              <span style="font-size: 11px; color: #666;">⏱️ 2-week plan</span>
+              <span style="font-size: 11px; color: #34C759; font-weight: 600;">Free</span>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee;">
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span style="color: #FFD700;">★★★★★</span>
+            <span style="font-size: 12px; color: #666;">4.9 (234)</span>
+          </div>
+          <span style="font-size: 12px; color: #666;">• Used 1.2k times</span>
+        </div>
+      </div>
+
+      <!-- Template Grid -->
+      <div class="section-header">
+        <h2>All Templates</h2>
+      </div>
+
+      <div class="card clickable" onclick="showScreen('template-detail')" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <div style="font-size: 36px;">🏕️</div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 2px;">Camping Trip Planner</h3>
+            <p style="font-size: 12px; color: #666;">Gear, food, activities & safety</p>
+            <div style="display: flex; gap: 10px; margin-top: 4px;">
+              <span style="font-size: 11px; color: #666;">18 tasks</span>
+              <span style="font-size: 11px; color: #34C759;">Free</span>
+              <span style="font-size: 11px; color: #666;">★ 4.8</span>
+            </div>
+          </div>
+          <span style="color: #999;">›</span>
+        </div>
+      </div>
+
+      <div class="card clickable" onclick="showScreen('template-detail')" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <div style="font-size: 36px;">🍳</div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 2px;">Brunch Party</h3>
+            <p style="font-size: 12px; color: #666;">Menu, setup & hosting tips</p>
+            <div style="display: flex; gap: 10px; margin-top: 4px;">
+              <span style="font-size: 11px; color: #666;">10 tasks</span>
+              <span style="font-size: 11px; color: #34C759;">Free</span>
+              <span style="font-size: 11px; color: #666;">★ 4.7</span>
+            </div>
+          </div>
+          <span style="color: #999;">›</span>
+        </div>
+      </div>
+
+      <div class="card clickable" onclick="showScreen('template-detail')" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <div style="font-size: 36px;">🎬</div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 2px;">Movie Marathon Night</h3>
+            <p style="font-size: 12px; color: #666;">Snacks, setup & movie picks</p>
+            <div style="display: flex; gap: 10px; margin-top: 4px;">
+              <span style="font-size: 11px; color: #666;">8 tasks</span>
+              <span style="font-size: 11px; color: #34C759;">Free</span>
+              <span style="font-size: 11px; color: #666;">★ 4.6</span>
+            </div>
+          </div>
+          <span style="color: #999;">›</span>
+        </div>
+      </div>
+
+      <div class="card clickable" onclick="showScreen('template-detail')" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <div style="font-size: 36px;">🏖️</div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 2px;">Beach Day Trip</h3>
+            <p style="font-size: 12px; color: #666;">Packing, food & activities</p>
+            <div style="display: flex; gap: 10px; margin-top: 4px;">
+              <span style="font-size: 11px; color: #666;">14 tasks</span>
+              <span style="font-size: 11px; color: #5856D6;">₹49</span>
+              <span style="font-size: 11px; color: #666;">★ 4.9</span>
+            </div>
+          </div>
+          <span style="color: #999;">›</span>
+        </div>
+      </div>
+
+      <div class="card clickable" onclick="showScreen('template-detail')" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <div style="font-size: 36px;">🎮</div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 2px;">Game Night</h3>
+            <p style="font-size: 12px; color: #666;">Games, snacks & tournament</p>
+            <div style="display: flex; gap: 10px; margin-top: 4px;">
+              <span style="font-size: 11px; color: #666;">9 tasks</span>
+              <span style="font-size: 11px; color: #34C759;">Free</span>
+              <span style="font-size: 11px; color: #666;">★ 4.5</span>
+            </div>
+          </div>
+          <span style="color: #999;">›</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-bar">
+      <div class="tab-item clickable" onclick="showScreen('misfits-home')">
+        <div class="tab-icon"></div>
+        <span>Home</span>
+      </div>
+      <div class="tab-item clickable" onclick="showScreen('clubs-tab')">
+        <div class="tab-icon"></div>
+        <span>Clubs</span>
+      </div>
+      <div class="tab-item clickable" onclick="showScreen('my-plans')">
+        <div class="tab-icon"></div>
+        <span>My Plans</span>
+      </div>
+      <div class="tab-item active clickable" onclick="showScreen('browse-templates')">
+        <div class="tab-icon"></div>
+        <span>Explore</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 11: Template Detail -->
+  <div class="screen" id="template-detail">
+    <div class="status-bar">9:41</div>
+    <div class="header header-with-back">
+      <div class="back-btn clickable" onclick="showScreen('browse-templates')">←</div>
+      <h1 style="font-size: 20px;">Template</h1>
+    </div>
+    <div class="content">
+      <!-- Template Hero -->
+      <div style="text-align: center; padding: 20px 0; margin-bottom: 16px;">
+        <div style="font-size: 64px; margin-bottom: 12px;">🎂</div>
+        <h2 style="font-size: 22px; margin-bottom: 4px;">Ultimate Birthday Party</h2>
+        <p style="font-size: 14px; color: #666;">Throw an unforgettable birthday bash</p>
+        <div style="display: flex; justify-content: center; gap: 16px; margin-top: 12px;">
+          <div style="text-align: center;">
+            <div style="font-size: 18px; font-weight: 700; color: #FF6B35;">12</div>
+            <div style="font-size: 11px; color: #666;">Tasks</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 18px; font-weight: 700; color: #FF6B35;">2</div>
+            <div style="font-size: 11px; color: #666;">Weeks</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 18px; font-weight: 700; color: #34C759;">Free</div>
+            <div style="font-size: 11px; color: #666;">Price</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rating & Reviews -->
+      <div class="card" style="padding: 12px; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 20px; color: #FFD700;">★</span>
+            <span style="font-size: 18px; font-weight: 700;">4.9</span>
+            <span style="font-size: 13px; color: #666;">(234 reviews)</span>
+          </div>
+          <span style="font-size: 12px; color: #666;">Used 1.2k times</span>
+        </div>
+      </div>
+
+      <!-- What's Included -->
+      <div class="section-header">
+        <h2>What's Included</h2>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 8px; border-left: 3px solid #FF6B35;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 20px;">📋</span>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">12 Pre-planned Tasks</div>
+            <div style="font-size: 12px; color: #666;">With detailed instructions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 8px; border-left: 3px solid #5856D6;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 20px;">💡</span>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">Pro Tips</div>
+            <div style="font-size: 12px; color: #666;">Expert advice for each step</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 8px; border-left: 3px solid #34C759;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 20px;">📅</span>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">Smart Timeline</div>
+            <div style="font-size: 12px; color: #666;">Auto-adjusts to your event date</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 16px; border-left: 3px solid #FF9500;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 20px;">🔗</span>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">Helpful Resources</div>
+            <div style="font-size: 12px; color: #666;">Vendor links, checklists & more</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Preview -->
+      <div class="section-header">
+        <h2>Task Preview</h2>
+      </div>
+
+      <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 16px;">
+        <div style="padding: 12px; border-bottom: 1px solid #eee;">
+          <div style="font-size: 11px; color: #FF6B35; font-weight: 600; margin-bottom: 4px;">2 WEEKS BEFORE</div>
+          <div style="font-size: 14px;">Set the date & create guest list</div>
+        </div>
+        <div style="padding: 12px; border-bottom: 1px solid #eee;">
+          <div style="font-size: 11px; color: #FF6B35; font-weight: 600; margin-bottom: 4px;">1 WEEK BEFORE</div>
+          <div style="font-size: 14px;">Send invites & plan menu</div>
+        </div>
+        <div style="padding: 12px; border-bottom: 1px solid #eee;">
+          <div style="font-size: 11px; color: #FF9500; font-weight: 600; margin-bottom: 4px;">3 DAYS BEFORE</div>
+          <div style="font-size: 14px;">Order cake & buy decorations</div>
+        </div>
+        <div style="padding: 12px; background: #f9f9f9;">
+          <div style="font-size: 11px; color: #34C759; font-weight: 600; margin-bottom: 4px;">DAY OF</div>
+          <div style="font-size: 14px;">Setup, welcome guests, enjoy!</div>
+        </div>
+      </div>
+
+      <!-- Creator -->
+      <div class="section-header">
+        <h2>Created By</h2>
+      </div>
+
+      <div class="card" style="padding: 12px; margin-bottom: 20px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div class="avatar" style="width: 44px; height: 44px; background: #FF6B35; color: white;">M</div>
+          <div style="flex: 1;">
+            <div style="font-weight: 600; font-size: 14px;">Misfits Team</div>
+            <div style="font-size: 12px; color: #666;">Official templates • 15 templates</div>
+          </div>
+          <span style="background: #34C759; color: white; padding: 4px 8px; border-radius: 4px; font-size: 10px;">VERIFIED</span>
+        </div>
+      </div>
+
+      <!-- Use Template Button -->
+      <button class="btn btn-primary clickable" style="margin-bottom: 12px;">Use This Template</button>
+      <p style="text-align: center; font-size: 12px; color: #666;">
+        You can customize everything after starting
+      </p>
     </div>
   </div>
 
@@ -1435,7 +1810,10 @@
       'crew-invite': 'Invite Friends to Crew',
       'linked-plan': 'Crew Plan View',
       'friend-invite': 'Friend Receives Crew Invite',
-      'my-plans': 'My Plans Tab (Hosting + Invited)'
+      'my-plans': 'My Plans Tab (Hosting + Invited)',
+      'create-plan': 'Create Plan (Scratch or Template)',
+      'browse-templates': 'Fun Templates Marketplace',
+      'template-detail': 'Template Detail & Preview'
     };
     document.getElementById('screen-label').textContent = 'Screen: ' + labels[screenId];
 
