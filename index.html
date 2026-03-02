@@ -372,13 +372,14 @@
 
 <nav class="wireframe-nav">
   <span style="margin-right: 12px; opacity: 0.7;">Misfits + Plans:</span>
-  <a href="#" onclick="showScreen('misfits-home')" id="nav-misfits-home" class="active">1. Unified Home</a>
-  <a href="#" onclick="showScreen('club-meetup')" id="nav-club-meetup">2. Club Meetup</a>
-  <a href="#" onclick="showScreen('create-linked-plan')" id="nav-create-linked-plan">3. Create Crew Plan</a>
-  <a href="#" onclick="showScreen('crew-invite')" id="nav-crew-invite">4. Invite Crew</a>
-  <a href="#" onclick="showScreen('linked-plan')" id="nav-linked-plan">5. Crew Plan View</a>
-  <a href="#" onclick="showScreen('friend-invite')" id="nav-friend-invite">6. Friend Gets Invite</a>
-  <a href="#" onclick="showScreen('my-plans')" id="nav-my-plans">7. My Plans Tab</a>
+  <a href="#" onclick="showScreen('misfits-home')" id="nav-misfits-home" class="active">1. Home</a>
+  <a href="#" onclick="showScreen('clubs-tab')" id="nav-clubs-tab">2. Clubs</a>
+  <a href="#" onclick="showScreen('club-detail')" id="nav-club-detail">3. Club Page</a>
+  <a href="#" onclick="showScreen('club-meetup')" id="nav-club-meetup">4. Meetup</a>
+  <a href="#" onclick="showScreen('create-linked-plan')" id="nav-create-linked-plan">5. Create Crew</a>
+  <a href="#" onclick="showScreen('linked-plan')" id="nav-linked-plan">6. Crew Plan</a>
+  <a href="#" onclick="showScreen('friend-invite')" id="nav-friend-invite">7. Friend Invite</a>
+  <a href="#" onclick="showScreen('my-plans')" id="nav-my-plans">8. My Plans</a>
 </nav>
 
 <div class="phone-frame">
@@ -490,7 +491,7 @@
         <div class="tab-icon"></div>
         <span>Home</span>
       </div>
-      <div class="tab-item clickable">
+      <div class="tab-item clickable" onclick="showScreen('clubs-tab')">
         <div class="tab-icon"></div>
         <span>Clubs</span>
       </div>
@@ -505,11 +506,248 @@
     </div>
   </div>
 
-  <!-- Screen 2: Club Meetup with "Going with friends?" -->
+  <!-- Screen 2: Clubs Tab -->
+  <div class="screen" id="clubs-tab">
+    <div class="status-bar">9:41</div>
+    <div class="header">
+      <h1>Your Clubs</h1>
+    </div>
+    <div class="content">
+      <!-- Club Card 1: Run Club -->
+      <div class="card clickable" onclick="showScreen('club-detail')" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #34C759, #30D158); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+            🏃
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 17px; margin-bottom: 4px;">Run Club</h3>
+            <p style="font-size: 13px; color: #666; margin-bottom: 6px;">Bangalore's largest running community</p>
+            <div style="display: flex; gap: 12px;">
+              <span style="font-size: 12px; color: #34C759; font-weight: 600;">2.4k members</span>
+              <span style="font-size: 12px; color: #FF6B35;">1 upcoming</span>
+            </div>
+          </div>
+          <span style="color: #999; font-size: 18px;">›</span>
+        </div>
+      </div>
+
+      <!-- Club Card 2: Photography Club -->
+      <div class="card clickable" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #5856D6, #AF52DE); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+            📸
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 17px; margin-bottom: 4px;">Photography Club</h3>
+            <p style="font-size: 13px; color: #666; margin-bottom: 6px;">Capture moments, share stories</p>
+            <div style="display: flex; gap: 12px;">
+              <span style="font-size: 12px; color: #5856D6; font-weight: 600;">890 members</span>
+              <span style="font-size: 12px; color: #FF6B35;">2 upcoming</span>
+            </div>
+          </div>
+          <span style="color: #999; font-size: 18px;">›</span>
+        </div>
+      </div>
+
+      <!-- Club Card 3: Book Club -->
+      <div class="card clickable" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #FF9500, #FF6B00); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+            📚
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 17px; margin-bottom: 4px;">Book Club</h3>
+            <p style="font-size: 13px; color: #666; margin-bottom: 6px;">Monthly reads & deep discussions</p>
+            <div style="display: flex; gap: 12px;">
+              <span style="font-size: 12px; color: #FF9500; font-weight: 600;">156 members</span>
+              <span style="font-size: 12px; color: #666;">Next: Mar 20</span>
+            </div>
+          </div>
+          <span style="color: #999; font-size: 18px;">›</span>
+        </div>
+      </div>
+
+      <!-- Discover More -->
+      <div style="margin-top: 24px; text-align: center;">
+        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Looking for more?</p>
+        <button class="btn btn-outline clickable" style="width: auto; padding: 12px 24px;">Explore Clubs</button>
+      </div>
+    </div>
+
+    <div class="tab-bar">
+      <div class="tab-item clickable" onclick="showScreen('misfits-home')">
+        <div class="tab-icon"></div>
+        <span>Home</span>
+      </div>
+      <div class="tab-item active clickable" onclick="showScreen('clubs-tab')">
+        <div class="tab-icon"></div>
+        <span>Clubs</span>
+      </div>
+      <div class="tab-item clickable" onclick="showScreen('my-plans')">
+        <div class="tab-icon"></div>
+        <span>My Plans</span>
+      </div>
+      <div class="tab-item clickable">
+        <div class="tab-icon"></div>
+        <span>Explore</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 3: Club Detail with Meetups List -->
+  <div class="screen" id="club-detail">
+    <div class="status-bar">9:41</div>
+    <!-- Club Cover -->
+    <div style="height: 140px; background: linear-gradient(135deg, #34C759, #30D158); position: relative;">
+      <div class="back-btn clickable" onclick="showScreen('clubs-tab')" style="position: absolute; top: 50px; left: 16px; background: rgba(255,255,255,0.9);">←</div>
+      <div style="position: absolute; bottom: 16px; left: 16px; color: white;">
+        <div style="font-size: 24px; font-weight: 700;">Run Club</div>
+        <div style="font-size: 13px; opacity: 0.9;">2.4k members • Since 2019</div>
+      </div>
+      <div style="position: absolute; bottom: 16px; right: 16px; font-size: 48px;">🏃</div>
+    </div>
+
+    <div class="content" style="padding-top: 16px;">
+      <!-- Club Stats -->
+      <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+        <div class="card" style="flex: 1; text-align: center; padding: 12px;">
+          <div style="font-size: 20px; font-weight: 700; color: #34C759;">127</div>
+          <div style="font-size: 11px; color: #666;">Meetups</div>
+        </div>
+        <div class="card" style="flex: 1; text-align: center; padding: 12px;">
+          <div style="font-size: 20px; font-weight: 700; color: #34C759;">2.4k</div>
+          <div style="font-size: 11px; color: #666;">Members</div>
+        </div>
+        <div class="card" style="flex: 1; text-align: center; padding: 12px;">
+          <div style="font-size: 20px; font-weight: 700; color: #34C759;">23</div>
+          <div style="font-size: 11px; color: #666;">Friends</div>
+        </div>
+      </div>
+
+      <!-- Upcoming Meetups -->
+      <div class="section-header">
+        <h2>Upcoming Meetups</h2>
+        <a href="#">See all</a>
+      </div>
+
+      <!-- Meetup 1: Featured/Big -->
+      <div class="card clickable" onclick="showScreen('club-meetup')" style="margin-bottom: 12px; border: 2px solid #34C759;">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+          <span style="background: #34C759; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;">FEATURED</span>
+          <span style="font-size: 12px; color: #666;">In 6 days</span>
+        </div>
+        <h3 style="font-size: 18px; margin-bottom: 6px;">City Marathon 2026</h3>
+        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Annual 5K, 10K, 21K run at Freedom Park. All fitness levels welcome!</p>
+        <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="font-size: 14px;">📅</span>
+            <span style="font-size: 12px; color: #666;">Sun, Mar 15 • 6 AM</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="font-size: 14px;">📍</span>
+            <span style="font-size: 12px; color: #666;">Freedom Park</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid #eee;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="attendee-list">
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">R</div>
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">A</div>
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">S</div>
+              <div class="attendee more" style="width: 28px; height: 28px; font-size: 9px;">+197</div>
+            </div>
+            <span style="font-size: 12px; color: #666;">200 going</span>
+          </div>
+          <span style="background: #34C759; color: white; padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">Going</span>
+        </div>
+      </div>
+
+      <!-- Meetup 2 -->
+      <div class="card clickable" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 12px;">
+          <div style="text-align: center; min-width: 50px;">
+            <div style="font-size: 18px; font-weight: 700; color: #34C759;">22</div>
+            <div style="font-size: 11px; color: #666;">MAR</div>
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 4px;">Saturday Morning 10K</h3>
+            <p style="font-size: 12px; color: #666;">Cubbon Park • 6:30 AM</p>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px;">
+              <span style="font-size: 12px; color: #666;">45 going</span>
+              <span style="background: #eee; color: #666; padding: 4px 10px; border-radius: 6px; font-size: 11px;">RSVP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meetup 3 -->
+      <div class="card clickable" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 12px;">
+          <div style="text-align: center; min-width: 50px;">
+            <div style="font-size: 18px; font-weight: 700; color: #34C759;">29</div>
+            <div style="font-size: 11px; color: #666;">MAR</div>
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 4px;">Trail Run: Nandi Hills</h3>
+            <p style="font-size: 12px; color: #666;">Nandi Hills • 5:00 AM</p>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px;">
+              <span style="font-size: 12px; color: #666;">28 going</span>
+              <span style="background: #eee; color: #666; padding: 4px 10px; border-radius: 6px; font-size: 11px;">RSVP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Past Meetups -->
+      <div class="section-header" style="margin-top: 20px;">
+        <h2>Past Meetups</h2>
+        <a href="#">See all</a>
+      </div>
+
+      <div class="card" style="opacity: 0.7;">
+        <div style="display: flex; gap: 12px;">
+          <div style="text-align: center; min-width: 50px;">
+            <div style="font-size: 18px; font-weight: 700; color: #999;">8</div>
+            <div style="font-size: 11px; color: #666;">MAR</div>
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 4px;">Weekly 5K Run</h3>
+            <p style="font-size: 12px; color: #666;">Cubbon Park • 72 attended</p>
+          </div>
+          <span style="font-size: 12px; color: #999;">Completed</span>
+        </div>
+      </div>
+
+      <!-- Club Leaders -->
+      <div class="section-header" style="margin-top: 20px;">
+        <h2>Club Leaders</h2>
+      </div>
+
+      <div style="display: flex; gap: 16px; overflow-x: auto; padding-bottom: 8px;">
+        <div style="text-align: center; min-width: 70px;">
+          <div class="avatar" style="margin: 0 auto 6px; width: 50px; height: 50px; background: #34C759; color: white; font-size: 18px;">RK</div>
+          <div style="font-size: 12px; font-weight: 600;">Rohan K</div>
+          <div style="font-size: 10px; color: #34C759;">Founder</div>
+        </div>
+        <div style="text-align: center; min-width: 70px;">
+          <div class="avatar" style="margin: 0 auto 6px; width: 50px; height: 50px;">MS</div>
+          <div style="font-size: 12px; font-weight: 600;">Maya S</div>
+          <div style="font-size: 10px; color: #666;">Co-lead</div>
+        </div>
+        <div style="text-align: center; min-width: 70px;">
+          <div class="avatar" style="margin: 0 auto 6px; width: 50px; height: 50px;">VT</div>
+          <div style="font-size: 12px; font-weight: 600;">Vikram T</div>
+          <div style="font-size: 10px; color: #666;">Pace Lead</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 4: Club Meetup with "Going with friends?" -->
   <div class="screen" id="club-meetup">
     <div class="status-bar">9:41</div>
     <div class="header header-with-back">
-      <div class="back-btn clickable" onclick="showScreen('misfits-home')">←</div>
+      <div class="back-btn clickable" onclick="showScreen('club-detail')">←</div>
       <div>
         <div style="font-size: 11px; color: #34C759; font-weight: 600;">RUN CLUB</div>
         <h1 style="font-size: 18px;">City Marathon 2026</h1>
@@ -601,7 +839,7 @@
     </div>
   </div>
 
-  <!-- Screen 3: Create Linked Plan -->
+  <!-- Screen 5: Create Linked Plan -->
   <div class="screen" id="create-linked-plan">
     <div class="status-bar">9:41</div>
     <div class="header header-with-back">
@@ -702,7 +940,7 @@
     </div>
   </div>
 
-  <!-- Screen 4: Crew Invite -->
+  <!-- Screen 5b: Crew Invite -->
   <div class="screen" id="crew-invite">
     <div class="status-bar">9:41</div>
     <div class="header header-with-back">
@@ -796,7 +1034,7 @@
     </div>
   </div>
 
-  <!-- Screen 5: Linked Plan View -->
+  <!-- Screen 6: Linked Plan View -->
   <div class="screen" id="linked-plan">
     <div class="status-bar">9:41</div>
     <div class="header header-with-back">
@@ -976,7 +1214,7 @@
     </div>
   </div>
 
-  <!-- Screen 6: Friend Gets Invite -->
+  <!-- Screen 7: Friend Gets Invite -->
   <div class="screen" id="friend-invite">
     <div class="status-bar">9:41</div>
     <div class="header header-with-back">
@@ -1076,7 +1314,7 @@
     </div>
   </div>
 
-  <!-- Screen 7: My Plans Tab -->
+  <!-- Screen 8: My Plans Tab -->
   <div class="screen" id="my-plans">
     <div class="status-bar">9:41</div>
     <div class="header">
@@ -1190,7 +1428,9 @@
     // Update label
     const labels = {
       'misfits-home': 'Unified Home (Clubs + Plans)',
-      'club-meetup': 'Club Meetup + "Going with Friends?"',
+      'clubs-tab': 'Your Clubs',
+      'club-detail': 'Club Page with Meetups List',
+      'club-meetup': 'Meetup Detail + "Going with Friends?"',
       'create-linked-plan': 'Create Crew Plan (Linked to Meetup)',
       'crew-invite': 'Invite Friends to Crew',
       'linked-plan': 'Crew Plan View',
