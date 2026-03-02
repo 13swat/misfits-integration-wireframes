@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misfits + Plans Integration - Wireframes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #333;
+    }
+
+    /* Wireframe container */
+    .wireframe-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #0f0f1a;
+      color: white;
+      padding: 12px;
+      z-index: 1000;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 12px;
+    }
+
+    .wireframe-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 6px 12px;
+      background: #333;
+      border-radius: 4px;
+    }
+
+    .wireframe-nav a:hover,
+    .wireframe-nav a.active {
+      background: #FF6B35;
+    }
+
+    /* Phone frame */
+    .phone-frame {
+      width: 375px;
+      min-height: 812px;
+      background: white;
+      margin: 80px auto 40px;
+      border-radius: 40px;
+      box-shadow: 0 10px 40px rgba(255,107,53,0.3);
+      overflow: hidden;
+      border: 8px solid #1a1a1a;
+      position: relative;
+    }
+
+    .screen {
+      display: none;
+      min-height: 796px;
+      position: relative;
+      background: #fafafa;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    /* Common components */
+    .status-bar {
+      height: 44px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      border-bottom: 1px solid #eee;
+    }
+
+    .header {
+      padding: 16px 20px;
+      background: white;
+      border-bottom: 1px solid #eee;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .header-with-back {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-btn {
+      width: 32px;
+      height: 32px;
+      background: #eee;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .tab-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: white;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-bottom: 20px;
+    }
+
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      color: #999;
+    }
+
+    .tab-item.active {
+      color: #FF6B35;
+    }
+
+    .tab-icon {
+      width: 24px;
+      height: 24px;
+      background: #ddd;
+      border-radius: 6px;
+    }
+
+    .tab-item.active .tab-icon {
+      background: #FF6B35;
+    }
+
+    .content {
+      padding: 20px;
+      padding-bottom: 100px;
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 12px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #fff0eb;
+      color: #FF6B35;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #FF6B35;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #eee;
+      color: #333;
+    }
+
+    .btn-outline {
+      background: white;
+      border: 2px solid #FF6B35;
+      color: #FF6B35;
+    }
+
+    /* Form elements */
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 6px;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      background: white;
+    }
+
+    /* Section headers */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-size: 18px;
+    }
+
+    .section-header a {
+      font-size: 14px;
+      color: #FF6B35;
+      text-decoration: none;
+    }
+
+    /* Attendees */
+    .attendee-list {
+      display: flex;
+      gap: -8px;
+    }
+
+    .attendee {
+      width: 40px;
+      height: 40px;
+      background: #ddd;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-left: -12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .attendee:first-child {
+      margin-left: 0;
+    }
+
+    .attendee.more {
+      background: #FF6B35;
+      color: white;
+    }
+
+    /* Avatar */
+    .avatar {
+      width: 36px;
+      height: 36px;
+      background: #ddd;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .avatar.small {
+      width: 28px;
+      height: 28px;
+      font-size: 11px;
+    }
+
+    /* Checklist items */
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+
+    .checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .checkbox.checked {
+      background: #34C759;
+      border-color: #34C759;
+    }
+
+    .checklist-item .assignee {
+      width: 28px;
+      height: 28px;
+      background: #ddd;
+      border-radius: 50%;
+      margin-left: auto;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Screen label */
+    .screen-label {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Clickable */
+    .clickable { cursor: pointer; transition: transform 0.1s, opacity 0.1s; }
+    .clickable:hover { opacity: 0.8; }
+    .clickable:active { transform: scale(0.98); }
+
+    /* Misfits brand colors */
+    .misfits-orange { color: #FF6B35; }
+    .misfits-bg { background: #FF6B35; }
+  </style>
+</head>
+<body>
+
+<nav class="wireframe-nav">
+  <span style="margin-right: 12px; opacity: 0.7;">Misfits + Plans:</span>
+  <a href="#" onclick="showScreen('misfits-home')" id="nav-misfits-home" class="active">1. Unified Home</a>
+  <a href="#" onclick="showScreen('club-meetup')" id="nav-club-meetup">2. Club Meetup</a>
+  <a href="#" onclick="showScreen('create-linked-plan')" id="nav-create-linked-plan">3. Create Crew Plan</a>
+  <a href="#" onclick="showScreen('crew-invite')" id="nav-crew-invite">4. Invite Crew</a>
+  <a href="#" onclick="showScreen('linked-plan')" id="nav-linked-plan">5. Crew Plan View</a>
+  <a href="#" onclick="showScreen('friend-invite')" id="nav-friend-invite">6. Friend Gets Invite</a>
+  <a href="#" onclick="showScreen('my-plans')" id="nav-my-plans">7. My Plans Tab</a>
+</nav>
+
+<div class="phone-frame">
+
+  <!-- Screen 1: Misfits Unified Home -->
+  <div class="screen active" id="misfits-home">
+    <div class="status-bar">9:41</div>
+    <div class="header">
+      <p style="font-size: 14px; color: #666;">Hey Rahul!</p>
+      <h1>Upcoming</h1>
+    </div>
+    <div class="content">
+      <!-- Date Header -->
+      <div style="font-size: 12px; color: #666; font-weight: 600; margin-bottom: 12px;">THIS WEEK</div>
+
+      <!-- Club Meetup with Crew Plan -->
+      <div class="card clickable" onclick="showScreen('club-meetup')" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 12px;">
+          <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #34C759, #30D158); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🏃</div>
+          <div style="flex: 1;">
+            <div style="font-size: 11px; color: #34C759; font-weight: 600; margin-bottom: 2px;">RUN CLUB</div>
+            <h3 style="font-size: 16px; margin-bottom: 2px;">City Marathon 2026</h3>
+            <p style="font-size: 13px; color: #666;">Sunday 6 AM • Freedom Park</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="attendee-list">
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">R</div>
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">A</div>
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">S</div>
+              <div class="attendee more" style="width: 28px; height: 28px; font-size: 9px;">+197</div>
+            </div>
+            <span style="font-size: 12px; color: #666;">200 going</span>
+          </div>
+          <span style="background: #34C759; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">Going</span>
+        </div>
+        <!-- Your crew indicator -->
+        <div class="clickable" onclick="event.stopPropagation(); showScreen('linked-plan')" style="margin-top: 12px; padding: 10px; background: #fff0eb; border-radius: 8px; border: 1px solid #FF6B35;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 14px;">👥</span>
+            <div style="flex: 1;">
+              <span style="font-size: 13px; font-weight: 600; color: #FF6B35;">Your Crew: 5 friends</span>
+              <span style="font-size: 12px; color: #666;"> • Carpool at 5 AM</span>
+            </div>
+            <span style="color: #FF6B35; font-size: 12px;">View →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Plan Card (no club) -->
+      <div class="card clickable" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 12px;">
+          <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF9500, #FF6B00); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🎂</div>
+          <div style="flex: 1;">
+            <div style="font-size: 11px; color: #FF9500; font-weight: 600; margin-bottom: 2px;">FRIEND PLAN</div>
+            <h3 style="font-size: 16px; margin-bottom: 2px;">Amit's Birthday Bash</h3>
+            <p style="font-size: 13px; color: #666;">Saturday 7 PM • Amit's Place</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="attendee-list">
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">A</div>
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">R</div>
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">P</div>
+              <div class="attendee more" style="width: 28px; height: 28px; font-size: 9px;">+9</div>
+            </div>
+            <span style="font-size: 12px; color: #666;">12 going</span>
+          </div>
+          <span style="background: #fff0eb; color: #FF6B35; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">Invited</span>
+        </div>
+        <div style="margin-top: 12px; padding: 10px; background: #fff3e0; border-radius: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 14px;">📋</span>
+            <span style="font-size: 12px; color: #666;">2 tasks assigned to you</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Date Header -->
+      <div style="font-size: 12px; color: #666; font-weight: 600; margin-bottom: 12px; margin-top: 20px;">NEXT WEEK</div>
+
+      <!-- Another Club Meetup (no crew plan yet) -->
+      <div class="card clickable" onclick="showScreen('club-meetup')" style="margin-bottom: 12px;">
+        <div style="display: flex; gap: 12px;">
+          <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #5856D6, #AF52DE); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">📸</div>
+          <div style="flex: 1;">
+            <div style="font-size: 11px; color: #5856D6; font-weight: 600; margin-bottom: 2px;">PHOTOGRAPHY CLUB</div>
+            <h3 style="font-size: 16px; margin-bottom: 2px;">Golden Hour Photowalk</h3>
+            <p style="font-size: 13px; color: #666;">Next Sunday 5 PM • Lalbagh</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee;">
+          <span style="font-size: 12px; color: #666;">18 going</span>
+          <span style="background: #eee; color: #666; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">RSVP →</span>
+        </div>
+      </div>
+
+      <!-- Create Plan prompt -->
+      <div style="margin-top: 24px; text-align: center;">
+        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Planning something with friends?</p>
+        <button class="btn btn-primary clickable" onclick="showScreen('my-plans')" style="width: auto; padding: 12px 24px;">+ Create a Plan</button>
+      </div>
+    </div>
+
+    <div class="tab-bar">
+      <div class="tab-item active clickable" onclick="showScreen('misfits-home')">
+        <div class="tab-icon"></div>
+        <span>Home</span>
+      </div>
+      <div class="tab-item clickable">
+        <div class="tab-icon"></div>
+        <span>Clubs</span>
+      </div>
+      <div class="tab-item clickable" onclick="showScreen('my-plans')">
+        <div class="tab-icon"></div>
+        <span>My Plans</span>
+      </div>
+      <div class="tab-item clickable">
+        <div class="tab-icon"></div>
+        <span>Explore</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 2: Club Meetup with "Going with friends?" -->
+  <div class="screen" id="club-meetup">
+    <div class="status-bar">9:41</div>
+    <div class="header header-with-back">
+      <div class="back-btn clickable" onclick="showScreen('misfits-home')">←</div>
+      <div>
+        <div style="font-size: 11px; color: #34C759; font-weight: 600;">RUN CLUB</div>
+        <h1 style="font-size: 18px;">City Marathon 2026</h1>
+      </div>
+    </div>
+    <div class="content">
+      <!-- Cover Image -->
+      <div class="card-image" style="height: 160px; margin: -20px -20px 16px -20px; border-radius: 0; background: linear-gradient(135deg, #34C759, #30D158);">
+        <span style="font-size: 48px;">🏃</span>
+      </div>
+
+      <!-- Event Details -->
+      <div class="card" style="margin-bottom: 16px;">
+        <div style="display: flex; gap: 16px; margin-bottom: 12px;">
+          <div style="text-align: center;">
+            <div style="font-size: 24px; font-weight: 700; color: #34C759;">15</div>
+            <div style="font-size: 12px; color: #666;">MAR</div>
+          </div>
+          <div>
+            <h3 style="margin-bottom: 4px;">Sunday, March 15</h3>
+            <p style="font-size: 13px; color: #666;">6:00 AM - 10:00 AM</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; padding-top: 12px; border-top: 1px solid #eee;">
+          <span style="font-size: 16px;">📍</span>
+          <span style="font-size: 14px;">Freedom Park, Bangalore</span>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <p style="font-size: 14px; line-height: 1.6; color: #444; margin-bottom: 16px;">
+        Join us for the annual City Marathon! 5K, 10K, and 21K categories. All fitness levels welcome. Medals and refreshments included.
+      </p>
+
+      <!-- Attendees -->
+      <div class="card" style="padding: 12px; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="attendee-list">
+              <div class="attendee" style="width: 32px; height: 32px;">R</div>
+              <div class="attendee" style="width: 32px; height: 32px;">A</div>
+              <div class="attendee" style="width: 32px; height: 32px;">S</div>
+              <div class="attendee" style="width: 32px; height: 32px;">P</div>
+              <div class="attendee more" style="width: 32px; height: 32px; font-size: 10px;">+196</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 16px; font-weight: 700;">200</div>
+            <div style="font-size: 11px; color: #666;">going</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RSVP Buttons -->
+      <div style="display: flex; gap: 8px; margin-bottom: 20px;">
+        <button class="btn clickable" style="flex: 1; padding: 14px; background: #34C759; color: white; border: none; border-radius: 10px; font-weight: 600;">Going</button>
+        <button class="btn clickable" style="flex: 1; padding: 14px; background: #eee; color: #666; border: none; border-radius: 10px; font-weight: 600;">Maybe</button>
+        <button class="btn clickable" style="flex: 1; padding: 14px; background: #eee; color: #666; border: none; border-radius: 10px; font-weight: 600;">Can't</button>
+      </div>
+
+      <!-- GOING WITH FRIENDS - KEY FEATURE -->
+      <div class="card clickable" onclick="showScreen('create-linked-plan')" style="padding: 16px; background: linear-gradient(135deg, #fff0eb, #ffe5db); border: 2px solid #FF6B35; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 48px; height: 48px; background: #FF6B35; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 24px;">👥</span>
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; color: #FF6B35; margin-bottom: 2px;">Going with friends?</h3>
+            <p style="font-size: 12px; color: #666;">Coordinate carpool, meet-up, split costs</p>
+          </div>
+          <span style="color: #FF6B35; font-size: 18px;">→</span>
+        </div>
+      </div>
+
+      <!-- Club Posts -->
+      <div class="section-header">
+        <h2>From the Club</h2>
+      </div>
+      <div class="card" style="padding: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <div class="avatar small" style="background: #34C759; color: white;">RC</div>
+          <div>
+            <span style="font-weight: 600; font-size: 13px;">Run Club</span>
+            <span style="font-size: 11px; color: #666;"> • 2 days ago</span>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: #444;">Route map is now live! Check your email for bib collection details. See you all Sunday!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 3: Create Linked Plan -->
+  <div class="screen" id="create-linked-plan">
+    <div class="status-bar">9:41</div>
+    <div class="header header-with-back">
+      <div class="back-btn clickable" onclick="showScreen('club-meetup')">←</div>
+      <h1 style="font-size: 20px;">Plan with Friends</h1>
+    </div>
+    <div class="content">
+      <!-- Linked Event -->
+      <div class="card" style="padding: 12px; margin-bottom: 16px; background: #f0fff4; border: 1px solid #34C759;">
+        <div style="font-size: 11px; color: #34C759; font-weight: 600; margin-bottom: 8px;">🔗 LINKED TO</div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #34C759, #30D158); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px;">🏃</div>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">City Marathon 2026</div>
+            <div style="font-size: 12px; color: #666;">Run Club • Sunday 6 AM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan Name -->
+      <div class="input-group">
+        <label>Your Crew Plan Name</label>
+        <input type="text" placeholder="e.g., Marathon Squad" value="Our Marathon Crew">
+      </div>
+
+      <!-- Quick Suggestions -->
+      <div class="section-header">
+        <h2>What do you want to coordinate?</h2>
+      </div>
+      <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Select all that apply</p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+        <div class="clickable" style="background: #fff0eb; border: 2px solid #FF6B35; padding: 10px 16px; border-radius: 20px; font-size: 13px; color: #FF6B35;">
+          🚗 Carpool
+        </div>
+        <div class="clickable" style="background: #fff0eb; border: 2px solid #FF6B35; padding: 10px 16px; border-radius: 20px; font-size: 13px; color: #FF6B35;">
+          🍳 Pre-event meal
+        </div>
+        <div class="clickable" style="background: #f5f5f5; border: 1px solid #ddd; padding: 10px 16px; border-radius: 20px; font-size: 13px; color: #666;">
+          🍕 Post-event meal
+        </div>
+        <div class="clickable" style="background: #f5f5f5; border: 1px solid #ddd; padding: 10px 16px; border-radius: 20px; font-size: 13px; color: #666;">
+          👕 Matching outfits
+        </div>
+        <div class="clickable" style="background: #f5f5f5; border: 1px solid #ddd; padding: 10px 16px; border-radius: 20px; font-size: 13px; color: #666;">
+          💰 Split costs
+        </div>
+      </div>
+
+      <!-- Your Timeline -->
+      <div class="section-header">
+        <h2>Your Crew Timeline</h2>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 8px; border-left: 3px solid #FF6B35;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 12px; color: #FF6B35; font-weight: 600;">5:00 AM</div>
+            <div style="font-size: 14px; font-weight: 500;">Meet at pickup point</div>
+          </div>
+          <span style="font-size: 12px; color: #666;">1 hr before</span>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 8px; border-left: 3px solid #FF6B35;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 12px; color: #FF6B35; font-weight: 600;">5:15 AM</div>
+            <div style="font-size: 14px; font-weight: 500;">Quick breakfast stop</div>
+          </div>
+          <span style="font-size: 12px; color: #666;">Optional</span>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 8px; border-left: 3px solid #34C759; background: #f0fff4;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 12px; color: #34C759; font-weight: 600;">6:00 AM</div>
+            <div style="font-size: 14px; font-weight: 500;">🏃 Marathon starts</div>
+          </div>
+          <span style="font-size: 11px; background: #34C759; color: white; padding: 2px 8px; border-radius: 4px;">Main Event</span>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 8px; border-left: 3px solid #FF9500;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 12px; color: #FF9500; font-weight: 600;">~9:30 AM</div>
+            <div style="font-size: 14px; font-weight: 500;">Brunch together</div>
+          </div>
+          <span style="font-size: 12px; color: #666;">After event</span>
+        </div>
+      </div>
+
+      <button class="btn btn-secondary clickable" style="margin-top: 8px; padding: 12px;">+ Add to timeline</button>
+
+      <button class="btn btn-primary clickable" style="margin-top: 20px;" onclick="showScreen('crew-invite')">Next: Invite Your Crew</button>
+    </div>
+  </div>
+
+  <!-- Screen 4: Crew Invite -->
+  <div class="screen" id="crew-invite">
+    <div class="status-bar">9:41</div>
+    <div class="header header-with-back">
+      <div class="back-btn clickable" onclick="showScreen('create-linked-plan')">←</div>
+      <h1 style="font-size: 20px;">Invite Your Crew</h1>
+    </div>
+    <div class="content">
+      <div class="card" style="padding: 12px; margin-bottom: 16px; background: #fff0eb;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 20px;">👥</span>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">Our Marathon Crew</div>
+            <div style="font-size: 12px; color: #666;">For: City Marathon 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- From Event Attendees -->
+      <div class="section-header">
+        <h2>Friends attending this event</h2>
+      </div>
+      <p style="font-size: 13px; color: #666; margin-bottom: 12px;">These friends are also going to City Marathon</p>
+
+      <div class="card" style="padding: 12px; margin-bottom: 8px; border: 2px solid #FF6B35;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div class="avatar">A</div>
+          <div style="flex: 1;">
+            <div style="font-weight: 600; font-size: 14px;">Amit Kumar</div>
+            <div style="font-size: 12px; color: #34C759;">Going to marathon</div>
+          </div>
+          <div style="width: 24px; height: 24px; background: #FF6B35; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">✓</div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 12px; margin-bottom: 8px; border: 2px solid #FF6B35;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div class="avatar">S</div>
+          <div style="flex: 1;">
+            <div style="font-weight: 600; font-size: 14px;">Sneha Patel</div>
+            <div style="font-size: 12px; color: #34C759;">Going to marathon</div>
+          </div>
+          <div style="width: 24px; height: 24px; background: #FF6B35; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">✓</div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 12px; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div class="avatar">P</div>
+          <div style="flex: 1;">
+            <div style="font-weight: 600; font-size: 14px;">Priya Sharma</div>
+            <div style="font-size: 12px; color: #34C759;">Going to marathon</div>
+          </div>
+          <div style="width: 24px; height: 24px; border: 2px solid #FF6B35; border-radius: 50%;"></div>
+        </div>
+      </div>
+
+      <!-- Other Friends -->
+      <div class="section-header" style="margin-top: 20px;">
+        <h2>Other friends</h2>
+      </div>
+      <p style="font-size: 13px; color: #666; margin-bottom: 12px;">They'll get an invite to both the crew plan AND the event</p>
+
+      <div class="card" style="padding: 12px; margin-bottom: 8px; border: 2px solid #FF6B35;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div class="avatar">M</div>
+          <div style="flex: 1;">
+            <div style="font-weight: 600; font-size: 14px;">Mike Chen</div>
+            <div style="font-size: 12px; color: #FF9500;">Not RSVP'd yet</div>
+          </div>
+          <div style="width: 24px; height: 24px; background: #FF6B35; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">✓</div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div style="background: #f5f5f5; border-radius: 10px; padding: 12px; margin-top: 20px;">
+        <div style="display: flex; justify-content: space-between; font-size: 13px;">
+          <span style="color: #666;">Selected:</span>
+          <span style="font-weight: 600;">4 friends</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; margin-top: 4px;">
+          <span style="color: #666;">Already going:</span>
+          <span style="color: #34C759;">2</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; margin-top: 4px;">
+          <span style="color: #666;">Will get event invite:</span>
+          <span style="color: #FF9500;">2</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary clickable" style="margin-top: 20px;" onclick="showScreen('linked-plan')">Create Crew Plan</button>
+    </div>
+  </div>
+
+  <!-- Screen 5: Linked Plan View -->
+  <div class="screen" id="linked-plan">
+    <div class="status-bar">9:41</div>
+    <div class="header header-with-back">
+      <div class="back-btn clickable" onclick="showScreen('misfits-home')">←</div>
+      <h1 style="font-size: 20px;">Our Marathon Crew</h1>
+    </div>
+    <div class="content">
+      <!-- Linked Event Banner -->
+      <div class="card clickable" onclick="showScreen('club-meetup')" style="padding: 12px; margin-bottom: 16px; background: linear-gradient(135deg, #f0fff4, #e8f5e9); border: 1px solid #34C759;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #34C759, #30D158); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">🏃</div>
+          <div style="flex: 1;">
+            <div style="font-size: 11px; color: #34C759; font-weight: 600;">MAIN EVENT</div>
+            <div style="font-weight: 600; font-size: 14px;">City Marathon 2026</div>
+            <div style="font-size: 12px; color: #666;">Sunday 6 AM • Freedom Park</div>
+          </div>
+          <span style="color: #34C759;">→</span>
+        </div>
+      </div>
+
+      <!-- Crew Members -->
+      <div class="section-header">
+        <h2>Your Crew</h2>
+        <a href="#">+ Add</a>
+      </div>
+      <div style="display: flex; gap: 12px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 8px;">
+        <div style="text-align: center; min-width: 60px;">
+          <div class="avatar" style="margin: 0 auto 4px; border: 2px solid #FF6B35;">R</div>
+          <div style="font-size: 11px;">You</div>
+          <div style="font-size: 10px; color: #FF6B35;">Host</div>
+        </div>
+        <div style="text-align: center; min-width: 60px;">
+          <div class="avatar" style="margin: 0 auto 4px;">A</div>
+          <div style="font-size: 11px;">Amit</div>
+          <div style="font-size: 10px; color: #34C759;">Going</div>
+        </div>
+        <div style="text-align: center; min-width: 60px;">
+          <div class="avatar" style="margin: 0 auto 4px;">S</div>
+          <div style="font-size: 11px;">Sneha</div>
+          <div style="font-size: 10px; color: #34C759;">Going</div>
+        </div>
+        <div style="text-align: center; min-width: 60px;">
+          <div class="avatar" style="margin: 0 auto 4px;">P</div>
+          <div style="font-size: 11px;">Priya</div>
+          <div style="font-size: 10px; color: #FF9500;">Pending</div>
+        </div>
+        <div style="text-align: center; min-width: 60px;">
+          <div class="avatar" style="margin: 0 auto 4px;">M</div>
+          <div style="font-size: 11px;">Mike</div>
+          <div style="font-size: 10px; color: #FF9500;">Pending</div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="section-header">
+        <h2>Our Timeline</h2>
+        <a href="#">Edit</a>
+      </div>
+
+      <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 16px;">
+        <div style="padding: 14px; border-bottom: 1px solid #eee;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 12px; color: #FF6B35; font-weight: 600;">5:00 AM</div>
+              <div style="font-size: 14px; font-weight: 500;">Meet at Rahul's place</div>
+              <div style="font-size: 12px; color: #666;">HSR Layout, Sector 2</div>
+            </div>
+            <span style="font-size: 20px;">📍</span>
+          </div>
+        </div>
+        <div style="padding: 14px; border-bottom: 1px solid #eee;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 12px; color: #FF6B35; font-weight: 600;">5:15 AM</div>
+              <div style="font-size: 14px; font-weight: 500;">Uber to venue</div>
+              <div style="font-size: 12px; color: #666;">Amit is booking</div>
+            </div>
+            <span style="font-size: 20px;">🚗</span>
+          </div>
+        </div>
+        <div style="padding: 14px; background: #f0fff4; border-bottom: 1px solid #eee;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 12px; color: #34C759; font-weight: 600;">6:00 AM</div>
+              <div style="font-size: 14px; font-weight: 500;">🏃 Marathon starts!</div>
+            </div>
+            <span style="background: #34C759; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px;">Main Event</span>
+          </div>
+        </div>
+        <div style="padding: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 12px; color: #FF9500; font-weight: 600;">~9:30 AM</div>
+              <div style="font-size: 14px; font-weight: 500;">Brunch at Cafe Central</div>
+            </div>
+            <span style="font-size: 20px;">🍳</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tasks -->
+      <div class="section-header">
+        <h2>Tasks</h2>
+        <a href="#">+ Add</a>
+      </div>
+
+      <div class="checklist-item" style="margin-bottom: 8px;">
+        <div class="checkbox"></div>
+        <div style="flex: 1;">
+          <div style="font-size: 14px; font-weight: 500;">Book Uber XL for 5</div>
+        </div>
+        <div class="assignee">A</div>
+      </div>
+
+      <div class="checklist-item" style="margin-bottom: 8px;">
+        <div class="checkbox checked"></div>
+        <div style="flex: 1; text-decoration: line-through; opacity: 0.6;">
+          <div style="font-size: 14px; font-weight: 500;">Get matching bandanas</div>
+        </div>
+        <div class="assignee">R</div>
+      </div>
+
+      <div class="checklist-item" style="margin-bottom: 8px;">
+        <div class="checkbox"></div>
+        <div style="flex: 1;">
+          <div style="font-size: 14px; font-weight: 500;">Reserve brunch table</div>
+          <div style="font-size: 12px; color: #FF9500;">Due tomorrow</div>
+        </div>
+        <div class="assignee">S</div>
+      </div>
+
+      <!-- Split Costs -->
+      <div class="section-header" style="margin-top: 20px;">
+        <h2>Split Costs</h2>
+      </div>
+
+      <div class="card" style="padding: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 14px; font-weight: 600;">Uber + Brunch</div>
+            <div style="font-size: 12px; color: #666;">Est. ₹2,500 total</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 16px; font-weight: 700; color: #FF6B35;">~₹500</div>
+            <div style="font-size: 11px; color: #666;">per person</div>
+          </div>
+        </div>
+        <button class="btn btn-outline clickable" style="margin-top: 12px; padding: 10px;">Set up bill split</button>
+      </div>
+
+      <!-- Crew Chat -->
+      <div class="section-header" style="margin-top: 20px;">
+        <h2>Crew Chat</h2>
+      </div>
+
+      <div class="card" style="padding: 12px;">
+        <div style="display: flex; align-items: start; gap: 10px; margin-bottom: 12px;">
+          <div class="avatar small">A</div>
+          <div style="flex: 1; background: #f5f5f5; padding: 10px; border-radius: 12px;">
+            <div style="font-size: 12px; font-weight: 600; margin-bottom: 2px;">Amit</div>
+            <div style="font-size: 13px;">I'll book the XL tonight!</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: start; gap: 10px;">
+          <div class="avatar small">S</div>
+          <div style="flex: 1; background: #f5f5f5; padding: 10px; border-radius: 12px;">
+            <div style="font-size: 12px; font-weight: 600; margin-bottom: 2px;">Sneha</div>
+            <div style="font-size: 13px;">Cafe Central confirmed for 9:30! 🎉</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-top: 16px;">
+        <input type="text" placeholder="Message your crew..." style="flex: 1; padding: 12px; border: 1px solid #eee; border-radius: 20px;">
+        <button style="background: #FF6B35; color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 18px;">↑</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 6: Friend Gets Invite -->
+  <div class="screen" id="friend-invite">
+    <div class="status-bar">9:41</div>
+    <div class="header header-with-back">
+      <div class="back-btn clickable" onclick="showScreen('misfits-home')">←</div>
+      <h1 style="font-size: 20px;">You're Invited!</h1>
+    </div>
+    <div class="content">
+      <!-- Invite Card -->
+      <div class="card" style="background: linear-gradient(135deg, #FF6B35, #FF8C42); color: white; padding: 24px; text-align: center; margin-bottom: 20px; border-radius: 16px;">
+        <div style="font-size: 48px; margin-bottom: 12px;">👥</div>
+        <h2 style="font-size: 20px; margin-bottom: 4px;">Join Rahul's Crew</h2>
+        <p style="opacity: 0.9; font-size: 14px;">for City Marathon 2026</p>
+      </div>
+
+      <!-- What's included -->
+      <div class="section-header">
+        <h2>What's the plan?</h2>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 24px;">🚗</span>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">Carpool from Rahul's place</div>
+            <div style="font-size: 12px; color: #666;">5:00 AM pickup</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 24px;">🏃</span>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">Run the marathon together</div>
+            <div style="font-size: 12px; color: #666;">City Marathon • 6:00 AM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 14px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 24px;">🍳</span>
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">Brunch after at Cafe Central</div>
+            <div style="font-size: 12px; color: #666;">~9:30 AM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Who's going -->
+      <div class="section-header" style="margin-top: 20px;">
+        <h2>Who's in the crew</h2>
+      </div>
+
+      <div style="display: flex; gap: 16px; margin-bottom: 20px;">
+        <div style="text-align: center;">
+          <div class="avatar" style="margin: 0 auto 4px; border: 2px solid #FF6B35;">R</div>
+          <div style="font-size: 11px;">Rahul</div>
+          <div style="font-size: 10px; color: #FF6B35;">Host</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="avatar" style="margin: 0 auto 4px;">A</div>
+          <div style="font-size: 11px;">Amit</div>
+          <div style="font-size: 10px; color: #34C759;">Going</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="avatar" style="margin: 0 auto 4px;">S</div>
+          <div style="font-size: 11px;">Sneha</div>
+          <div style="font-size: 10px; color: #34C759;">Going</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="avatar" style="margin: 0 auto 4px; background: #eee; color: #999;">?</div>
+          <div style="font-size: 11px;">You?</div>
+        </div>
+      </div>
+
+      <!-- Cost estimate -->
+      <div class="card" style="padding: 14px; background: #fff0eb; border: 1px solid #FF6B35;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 14px; font-weight: 600;">Your estimated share</div>
+            <div style="font-size: 12px; color: #666;">Uber + Brunch</div>
+          </div>
+          <div style="font-size: 20px; font-weight: 700; color: #FF6B35;">~₹500</div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div style="margin-top: 24px;">
+        <button class="btn btn-primary clickable" style="margin-bottom: 12px;" onclick="showScreen('linked-plan')">Join the Crew</button>
+        <button class="btn btn-secondary clickable" onclick="showScreen('club-meetup')">Just RSVP to Marathon</button>
+      </div>
+
+      <p style="text-align: center; font-size: 12px; color: #666; margin-top: 12px;">
+        Not in Run Club? You'll get an invite to join the marathon too.
+      </p>
+    </div>
+  </div>
+
+  <!-- Screen 7: My Plans Tab -->
+  <div class="screen" id="my-plans">
+    <div class="status-bar">9:41</div>
+    <div class="header">
+      <h1>My Plans</h1>
+    </div>
+    <div class="content">
+      <!-- Tabs -->
+      <div style="display: flex; gap: 8px; margin-bottom: 20px;">
+        <span style="background: #FF6B35; color: white; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600;">All</span>
+        <span style="background: #f5f5f5; color: #666; padding: 8px 16px; border-radius: 20px; font-size: 13px;">Hosting</span>
+        <span style="background: #f5f5f5; color: #666; padding: 8px 16px; border-radius: 20px; font-size: 13px;">Invited</span>
+      </div>
+
+      <!-- Hosting Section -->
+      <div class="section-header">
+        <h2>Hosting</h2>
+      </div>
+
+      <div class="card clickable" onclick="showScreen('linked-plan')" style="margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #FF6B35, #FF8C42); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">👥</div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 2px;">Our Marathon Crew</h3>
+            <p style="font-size: 12px; color: #666;">Linked to: City Marathon</p>
+            <div style="display: flex; gap: 8px; margin-top: 4px;">
+              <span style="font-size: 11px; color: #34C759;">5 friends</span>
+              <span style="font-size: 11px; color: #666;">• Sunday 5 AM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Invited Section -->
+      <div class="section-header" style="margin-top: 20px;">
+        <h2>Invited</h2>
+      </div>
+
+      <div class="card clickable" style="margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #FF9500, #FF6B00); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">🎂</div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 2px;">Amit's Birthday Bash</h3>
+            <p style="font-size: 12px; color: #666;">Invited by Amit</p>
+            <div style="display: flex; gap: 8px; margin-top: 4px;">
+              <span style="font-size: 11px; color: #666;">12 going</span>
+              <span style="font-size: 11px; color: #666;">• Saturday 7 PM</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 12px; padding: 10px; background: #fff3e0; border-radius: 8px;">
+          <span style="font-size: 12px; color: #f57c00;">📋 2 tasks assigned to you</span>
+        </div>
+      </div>
+
+      <div class="card clickable" onclick="showScreen('friend-invite')" style="margin-bottom: 12px; border: 2px dashed #FF6B35;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 50px; height: 50px; background: #fff0eb; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">✉️</div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 15px; margin-bottom: 2px; color: #FF6B35;">New Invite!</h3>
+            <p style="font-size: 12px; color: #666;">Photography Crew - Sneha invited you</p>
+          </div>
+          <span style="background: #FF6B35; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px;">View</span>
+        </div>
+      </div>
+
+      <!-- Create Plan -->
+      <div style="margin-top: 24px;">
+        <button class="btn btn-primary clickable">+ Create New Plan</button>
+        <p style="text-align: center; font-size: 12px; color: #666; margin-top: 8px;">
+          Plan something with friends or use a template
+        </p>
+      </div>
+    </div>
+
+    <div class="tab-bar">
+      <div class="tab-item clickable" onclick="showScreen('misfits-home')">
+        <div class="tab-icon"></div>
+        <span>Home</span>
+      </div>
+      <div class="tab-item clickable">
+        <div class="tab-icon"></div>
+        <span>Clubs</span>
+      </div>
+      <div class="tab-item active clickable" onclick="showScreen('my-plans')">
+        <div class="tab-icon"></div>
+        <span>My Plans</span>
+      </div>
+      <div class="tab-item clickable">
+        <div class="tab-icon"></div>
+        <span>Explore</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="screen-label" id="screen-label">Screen: Unified Home</div>
+
+<script>
+  function showScreen(screenId) {
+    // Hide all screens
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    // Show selected screen
+    document.getElementById(screenId).classList.add('active');
+
+    // Update nav
+    document.querySelectorAll('.wireframe-nav a').forEach(a => a.classList.remove('active'));
+    const navEl = document.getElementById('nav-' + screenId);
+    if (navEl) navEl.classList.add('active');
+
+    // Update label
+    const labels = {
+      'misfits-home': 'Unified Home (Clubs + Plans)',
+      'club-meetup': 'Club Meetup + "Going with Friends?"',
+      'create-linked-plan': 'Create Crew Plan (Linked to Meetup)',
+      'crew-invite': 'Invite Friends to Crew',
+      'linked-plan': 'Crew Plan View',
+      'friend-invite': 'Friend Receives Crew Invite',
+      'my-plans': 'My Plans Tab (Hosting + Invited)'
+    };
+    document.getElementById('screen-label').textContent = 'Screen: ' + labels[screenId];
+
+    // Scroll to top of phone frame
+    document.querySelector('.phone-frame').scrollTop = 0;
+  }
+</script>
+
+</body>
+</html>
