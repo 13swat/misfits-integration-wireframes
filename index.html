@@ -380,6 +380,7 @@
   <a href="#" onclick="showScreen('linked-plan')" id="nav-linked-plan">View Crew</a>
   <a href="#" onclick="showScreen('my-plans')" id="nav-my-plans">My Plans</a>
   <a href="#" onclick="showScreen('create-plan')" id="nav-create-plan">Create Plan</a>
+  <a href="#" onclick="showScreen('import-event')" id="nav-import-event">Import Event</a>
   <a href="#" onclick="showScreen('browse-templates')" id="nav-browse-templates">Templates</a>
   <a href="#" onclick="showScreen('template-detail')" id="nav-template-detail">Template</a>
 </nav>
@@ -465,6 +466,38 @@
       <!-- Date Header -->
       <div style="font-size: 12px; color: #666; font-weight: 600; margin-bottom: 12px; margin-top: 20px;">NEXT WEEK</div>
 
+      <!-- Imported External Event (BookMyShow) -->
+      <div class="card clickable" style="margin-bottom: 12px; border: 1px solid #E63946;">
+        <div style="display: flex; gap: 12px;">
+          <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #E63946, #c1121f); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🎬</div>
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 2px;">
+              <span style="font-size: 11px; color: #E63946; font-weight: 600;">BOOKMYSHOW</span>
+              <span style="font-size: 9px; background: #E63946; color: white; padding: 2px 6px; border-radius: 4px;">IMPORTED</span>
+            </div>
+            <h3 style="font-size: 16px; margin-bottom: 2px;">Dune: Part Three</h3>
+            <p style="font-size: 13px; color: #666;">Friday 9 PM • PVR Orion Mall</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="attendee-list">
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">R</div>
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">V</div>
+              <div class="attendee more" style="width: 28px; height: 28px; font-size: 9px;">+3</div>
+            </div>
+            <span style="font-size: 12px; color: #666;">5 in your crew</span>
+          </div>
+          <span style="background: #FF6B35; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">Hosting</span>
+        </div>
+        <div class="clickable" style="margin-top: 12px; padding: 10px; background: #fff0eb; border-radius: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 14px;">🍕</span>
+            <span style="font-size: 12px; color: #666;">Dinner at 7:30 PM before movie</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Another Club Meetup (no crew plan yet) -->
       <div class="card clickable" onclick="showScreen('meetup-detail')" style="margin-bottom: 12px;">
         <div style="display: flex; gap: 12px;">
@@ -481,10 +514,43 @@
         </div>
       </div>
 
+      <!-- Standalone Plan (Template-based) -->
+      <div class="card clickable" style="margin-bottom: 12px; border: 1px solid #34C759;">
+        <div style="display: flex; gap: 12px;">
+          <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #34C759, #30D158); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🏕️</div>
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 2px;">
+              <span style="font-size: 11px; color: #34C759; font-weight: 600;">FRIEND PLAN</span>
+              <span style="font-size: 9px; background: #34C759; color: white; padding: 2px 6px; border-radius: 4px;">TEMPLATE</span>
+            </div>
+            <h3 style="font-size: 16px; margin-bottom: 2px;">Coorg Camping Trip</h3>
+            <p style="font-size: 13px; color: #666;">Mar 22-24 • 3 days</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="attendee-list">
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">R</div>
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">A</div>
+              <div class="attendee" style="width: 28px; height: 28px; font-size: 10px;">S</div>
+              <div class="attendee more" style="width: 28px; height: 28px; font-size: 9px;">+4</div>
+            </div>
+            <span style="font-size: 12px; color: #666;">7 confirmed</span>
+          </div>
+          <span style="background: #34C759; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">Confirmed</span>
+        </div>
+        <div style="margin-top: 12px; padding: 10px; background: #f0fff4; border-radius: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 14px;">📋</span>
+            <span style="font-size: 12px; color: #666;">3 tasks pending • Gear checklist due tomorrow</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Create Plan prompt -->
       <div style="margin-top: 24px; text-align: center;">
         <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Planning something with friends?</p>
-        <button class="btn btn-primary clickable" onclick="showScreen('my-plans')" style="width: auto; padding: 12px 24px;">+ Create a Plan</button>
+        <button class="btn btn-primary clickable" onclick="showScreen('create-plan')" style="width: auto; padding: 12px 24px;">+ Create a Plan</button>
       </div>
     </div>
 
@@ -1451,6 +1517,26 @@
         </div>
       </div>
 
+      <!-- Import from Apps -->
+      <div class="card clickable" onclick="showScreen('import-event')" style="padding: 20px; margin-bottom: 12px; border: 2px solid #E63946; background: #fff5f5;">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #E63946, #c1121f); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+            🔗
+          </div>
+          <div style="flex: 1;">
+            <h3 style="font-size: 17px; margin-bottom: 4px; color: #E63946;">Import from Apps</h3>
+            <p style="font-size: 13px; color: #666;">Add planning layer to BookMyShow, Zomato, Insider events</p>
+            <div style="display: flex; gap: 6px; margin-top: 6px;">
+              <span style="font-size: 14px;">🎬</span>
+              <span style="font-size: 14px;">🍽️</span>
+              <span style="font-size: 14px;">🎵</span>
+              <span style="font-size: 14px;">🎭</span>
+            </div>
+          </div>
+          <span style="color: #E63946; font-size: 18px;">›</span>
+        </div>
+      </div>
+
       <!-- Popular Templates Preview -->
       <div class="section-header" style="margin-top: 24px;">
         <h2>Popular Templates</h2>
@@ -1650,7 +1736,120 @@
     </div>
   </div>
 
-  <!-- Screen 11: Template Detail -->
+  <!-- Screen 11: Import Event from External Apps -->
+  <div class="screen" id="import-event">
+    <div class="status-bar">9:41</div>
+    <div class="header header-with-back">
+      <div class="back-btn clickable" onclick="showScreen('create-plan')">←</div>
+      <h1 style="font-size: 20px;">Import Event</h1>
+    </div>
+    <div class="content">
+      <!-- Paste URL -->
+      <div class="input-group">
+        <label>Paste event URL</label>
+        <div style="display: flex; gap: 8px;">
+          <input type="text" placeholder="https://in.bookmyshow.com/..." style="flex: 1;" value="https://in.bookmyshow.com/events/dune-3">
+          <button class="btn btn-primary clickable" style="width: auto; padding: 14px 20px;">Fetch</button>
+        </div>
+      </div>
+
+      <!-- Supported Apps -->
+      <div class="section-header" style="margin-top: 20px;">
+        <h2>Supported Apps</h2>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;">
+        <div style="display: flex; align-items: center; gap: 8px; background: #f5f5f5; padding: 8px 14px; border-radius: 20px;">
+          <span style="font-size: 18px;">🎬</span>
+          <span style="font-size: 13px; font-weight: 500;">BookMyShow</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; background: #f5f5f5; padding: 8px 14px; border-radius: 20px;">
+          <span style="font-size: 18px;">🍽️</span>
+          <span style="font-size: 13px; font-weight: 500;">Zomato</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; background: #f5f5f5; padding: 8px 14px; border-radius: 20px;">
+          <span style="font-size: 18px;">🎵</span>
+          <span style="font-size: 13px; font-weight: 500;">Insider</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; background: #f5f5f5; padding: 8px 14px; border-radius: 20px;">
+          <span style="font-size: 18px;">🎭</span>
+          <span style="font-size: 13px; font-weight: 500;">Paytm Events</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; background: #f5f5f5; padding: 8px 14px; border-radius: 20px;">
+          <span style="font-size: 18px;">🏟️</span>
+          <span style="font-size: 13px; font-weight: 500;">District</span>
+        </div>
+      </div>
+
+      <!-- Fetched Event Preview -->
+      <div class="section-header">
+        <h2>Event Found</h2>
+      </div>
+      <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 16px; border: 2px solid #34C759;">
+        <!-- Event Image -->
+        <div style="height: 140px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center; color: white;">
+            <div style="font-size: 48px; margin-bottom: 8px;">🎬</div>
+            <div style="font-size: 12px; opacity: 0.7;">Movie Poster</div>
+          </div>
+        </div>
+        <div style="padding: 16px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <span style="background: #E63946; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">BOOKMYSHOW</span>
+            <span style="background: #34C759; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px;">FOUND</span>
+          </div>
+          <h3 style="font-size: 18px; margin-bottom: 6px;">Dune: Part Three</h3>
+          <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Sci-Fi • 2h 45m • English, Hindi, Tamil</p>
+
+          <div style="display: flex; gap: 16px; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 14px;">📅</span>
+              <span style="font-size: 12px; color: #666;">Fri, Mar 21</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 14px;">🕘</span>
+              <span style="font-size: 12px; color: #666;">9:00 PM</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="font-size: 14px;">📍</span>
+            <span style="font-size: 12px; color: #666;">PVR Orion Mall, Bangalore</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- What to Plan -->
+      <div class="section-header">
+        <h2>What do you want to coordinate?</h2>
+      </div>
+      <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Select all that apply</p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+        <div class="clickable" style="background: #fff0eb; border: 2px solid #FF6B35; padding: 10px 16px; border-radius: 20px; font-size: 13px; color: #FF6B35;">
+          🎫 Book tickets together
+        </div>
+        <div class="clickable" style="background: #fff0eb; border: 2px solid #FF6B35; padding: 10px 16px; border-radius: 20px; font-size: 13px; color: #FF6B35;">
+          🍕 Pre-movie dinner
+        </div>
+        <div class="clickable" style="background: #f5f5f5; border: 1px solid #ddd; padding: 10px 16px; border-radius: 20px; font-size: 13px; color: #666;">
+          🚗 Carpool
+        </div>
+        <div class="clickable" style="background: #f5f5f5; border: 1px solid #ddd; padding: 10px 16px; border-radius: 20px; font-size: 13px; color: #666;">
+          🍿 Post-movie hangout
+        </div>
+        <div class="clickable" style="background: #f5f5f5; border: 1px solid #ddd; padding: 10px 16px; border-radius: 20px; font-size: 13px; color: #666;">
+          💰 Split costs
+        </div>
+      </div>
+
+      <button class="btn btn-primary clickable" onclick="showScreen('crew-invite')">Create Plan & Invite Friends</button>
+
+      <p style="text-align: center; font-size: 12px; color: #666; margin-top: 12px;">
+        You'll still book tickets on BookMyShow • This adds a coordination layer
+      </p>
+    </div>
+  </div>
+
+  <!-- Screen 12: Template Detail -->
   <div class="screen" id="template-detail">
     <div class="status-bar">9:41</div>
     <div class="header header-with-back">
@@ -1802,7 +2001,7 @@
 
     // Update label
     const labels = {
-      'misfits-home': 'Unified Home (Clubs + Plans)',
+      'misfits-home': 'Unified Home (Clubs + External + Plans)',
       'clubs-tab': 'Your Clubs',
       'club-meetups': 'Club Meetups (List)',
       'meetup-detail': 'Meetup Detail + "Going with Friends?"',
@@ -1811,7 +2010,8 @@
       'linked-plan': 'Crew Plan View',
       'friend-invite': 'Friend Receives Crew Invite',
       'my-plans': 'My Plans Tab (Hosting + Invited)',
-      'create-plan': 'Create Plan (Scratch or Template)',
+      'create-plan': 'Create Plan (Scratch, Template, or Import)',
+      'import-event': 'Import from BookMyShow/Zomato/Insider',
       'browse-templates': 'Fun Templates Marketplace',
       'template-detail': 'Template Detail & Preview'
     };
