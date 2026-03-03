@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misfits + Plans - Design Theme Exploration</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      padding: 40px;
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #888;
+      margin-bottom: 40px;
+      font-size: 14px;
+    }
+
+    /* Theme Grid */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .theme-column {
+      background: #1a1a1a;
+      border-radius: 20px;
+      padding: 24px;
+      border: 2px solid #333;
+    }
+
+    .theme-column.selected {
+      border-color: #FF6B35;
+    }
+
+    .theme-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #333;
+    }
+
+    .theme-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .theme-desc {
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* Phone frames */
+    .phone {
+      width: 100%;
+      aspect-ratio: 375/700;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    /* Color swatches */
+    .swatches {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .swatch-label {
+      font-size: 10px;
+      color: #666;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    /* Typography samples */
+    .type-sample {
+      margin-bottom: 12px;
+    }
+
+    .type-sample span {
+      display: block;
+      font-size: 10px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    /* Section headers */
+    .section-title {
+      font-size: 14px;
+      color: #FF6B35;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      margin-top: 24px;
+    }
+
+    /* Theme A: Sunshine */
+    .theme-a .phone {
+      background: #FFF9F5;
+    }
+
+    /* Theme B: Electric */
+    .theme-b .phone {
+      background: #0D0D0D;
+    }
+
+    /* Theme C: Soft Social */
+    .theme-c .phone {
+      background: #F8F6FF;
+    }
+
+    /* Notes */
+    .theme-notes {
+      background: #111;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .theme-notes h4 {
+      color: #fff;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .theme-notes ul {
+      padding-left: 16px;
+    }
+
+    .theme-notes li {
+      margin-bottom: 4px;
+    }
+
+    /* Vote button */
+    .vote-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: all 0.2s;
+    }
+
+    .vote-btn:hover {
+      transform: scale(1.02);
+    }
+
+    .theme-a .vote-btn {
+      background: linear-gradient(135deg, #FF6B35, #FF8C42);
+      color: white;
+    }
+
+    .theme-b .vote-btn {
+      background: linear-gradient(135deg, #6366F1, #8B5CF6);
+      color: white;
+    }
+
+    .theme-c .vote-btn {
+      background: linear-gradient(135deg, #EC4899, #F472B6);
+      color: white;
+    }
+
+    /* Design tokens table */
+    .tokens-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 40px;
+      font-size: 13px;
+    }
+
+    .tokens-table th {
+      text-align: left;
+      padding: 12px;
+      background: #1a1a1a;
+      border-bottom: 1px solid #333;
+    }
+
+    .tokens-table td {
+      padding: 12px;
+      border-bottom: 1px solid #222;
+    }
+
+    /* Comparison section */
+    .comparison-section {
+      margin-top: 60px;
+    }
+
+    .comparison-title {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .comparison-subtitle {
+      color: #888;
+      margin-bottom: 32px;
+    }
+
+    /* Reference images */
+    .references {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+      overflow-x: auto;
+    }
+
+    .reference-card {
+      min-width: 200px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .reference-card h4 {
+      margin-bottom: 8px;
+    }
+
+    .reference-card p {
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Misfits + Plans: Design Theme Exploration</h1>
+<p class="subtitle">3 directions to explore before detailed wireframes. Each theme shows the same home screen.</p>
+
+<!-- Design References -->
+<div class="references">
+  <div class="reference-card">
+    <h4>Partiful</h4>
+    <p>Playful event pages, bold gradients, confetti animations, meme-friendly</p>
+  </div>
+  <div class="reference-card">
+    <h4>IRL</h4>
+    <p>Clean calendar grid, subtle colors, group avatars, minimal UI</p>
+  </div>
+  <div class="reference-card">
+    <h4>Discord</h4>
+    <p>Dark mode first, community channels, rich presence, notification badges</p>
+  </div>
+</div>
+
+<!-- Theme Grid -->
+<div class="theme-grid">
+
+  <!-- THEME A: Sunshine -->
+  <div class="theme-column theme-a">
+    <div class="theme-header">
+      <div class="theme-name">A. Sunshine</div>
+      <div class="theme-desc">Warm, playful, current Misfits DNA</div>
+    </div>
+
+    <div class="phone">
+      <svg viewBox="0 0 375 700" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect fill="#FFF9F5" width="375" height="700"/>
+
+        <!-- Status bar -->
+        <rect fill="#FFFFFF" width="375" height="44"/>
+        <text x="187" y="28" text-anchor="middle" font-size="14" font-weight="600" fill="#333">9:41</text>
+
+        <!-- Header -->
+        <rect fill="#FFFFFF" y="44" width="375" height="80"/>
+        <text x="20" y="72" font-size="13" fill="#888">Hey Rahul!</text>
+        <text x="20" y="100" font-size="26" font-weight="700" fill="#1a1a1a">Upcoming</text>
+
+        <!-- Card 1: Club Meetup -->
+        <rect x="16" y="140" width="343" height="140" rx="16" fill="#FFFFFF" filter="url(#shadow)"/>
+        <rect x="24" y="152" width="48" height="48" rx="12" fill="#34C759"/>
+        <text x="48" y="184" text-anchor="middle" font-size="24">🏃</text>
+        <text x="84" y="166" font-size="11" font-weight="600" fill="#34C759">RUN CLUB</text>
+        <text x="84" y="186" font-size="16" font-weight="600" fill="#1a1a1a">City Marathon 2026</text>
+        <text x="84" y="206" font-size="13" fill="#666">Sunday 6 AM • Freedom Park</text>
+
+        <!-- Crew indicator -->
+        <rect x="24" y="232" width="319" height="36" rx="8" fill="#FFF0EB" stroke="#FF6B35" stroke-width="1"/>
+        <text x="40" y="255" font-size="13" fill="#FF6B35">👥 Your Crew: 5 friends • Carpool at 5 AM</text>
+
+        <!-- Card 2: Imported Event -->
+        <rect x="16" y="296" width="343" height="120" rx="16" fill="#FFFFFF" stroke="#E63946" stroke-width="1"/>
+        <rect x="24" y="308" width="48" height="48" rx="12" fill="#E63946"/>
+        <text x="48" y="340" text-anchor="middle" font-size="24">🎬</text>
+        <rect x="84" y="308" width="70" height="16" rx="4" fill="#E63946"/>
+        <text x="90" y="320" font-size="9" fill="white" font-weight="600">BOOKMYSHOW</text>
+        <text x="84" y="346" font-size="16" font-weight="600" fill="#1a1a1a">Dune: Part Three</text>
+        <text x="84" y="366" font-size="13" fill="#666">Friday 9 PM • PVR Orion</text>
+
+        <!-- Card 3: Friend Plan -->
+        <rect x="16" y="432" width="343" height="100" rx="16" fill="#FFFFFF" stroke="#34C759" stroke-width="1"/>
+        <rect x="24" y="444" width="48" height="48" rx="12" fill="#34C759"/>
+        <text x="48" y="476" text-anchor="middle" font-size="24">🏕️</text>
+        <rect x="84" y="444" width="70" height="16" rx="4" fill="#34C759"/>
+        <text x="92" y="456" font-size="9" fill="white" font-weight="600">FRIEND PLAN</text>
+        <text x="84" y="480" font-size="16" font-weight="600" fill="#1a1a1a">Coorg Camping Trip</text>
+        <text x="84" y="500" font-size="13" fill="#666">Mar 22-24 • 7 confirmed</text>
+
+        <!-- CTA Button -->
+        <rect x="100" y="556" width="175" height="44" rx="22" fill="#FF6B35"/>
+        <text x="187" y="584" text-anchor="middle" font-size="14" font-weight="600" fill="white">+ Create a Plan</text>
+
+        <!-- Tab Bar -->
+        <rect y="620" width="375" height="80" fill="#FFFFFF"/>
+        <line x1="0" y1="620" x2="375" y2="620" stroke="#EEE" stroke-width="1"/>
+        <circle cx="47" cy="652" r="12" fill="#FF6B35"/>
+        <text x="47" y="680" text-anchor="middle" font-size="10" fill="#FF6B35">Home</text>
+        <circle cx="140" cy="652" r="12" fill="#DDD"/>
+        <text x="140" y="680" text-anchor="middle" font-size="10" fill="#999">Clubs</text>
+        <circle cx="234" cy="652" r="12" fill="#DDD"/>
+        <text x="234" y="680" text-anchor="middle" font-size="10" fill="#999">Plans</text>
+        <circle cx="328" cy="652" r="12" fill="#DDD"/>
+        <text x="328" y="680" text-anchor="middle" font-size="10" fill="#999">Explore</text>
+
+        <defs>
+          <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.08"/>
+          </filter>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="section-title">Colors</div>
+    <div class="swatches">
+      <div>
+        <div class="swatch" style="background: #FF6B35;"></div>
+        <div class="swatch-label">Primary</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #FFF9F5;"></div>
+        <div class="swatch-label">BG</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #34C759;"></div>
+        <div class="swatch-label">Success</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #E63946;"></div>
+        <div class="swatch-label">Import</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #1a1a1a;"></div>
+        <div class="swatch-label">Text</div>
+      </div>
+    </div>
+
+    <div class="section-title">Typography</div>
+    <div class="type-sample">
+      <span>Headlines</span>
+      <div style="font-size: 24px; font-weight: 700; color: #1a1a1a;">SF Pro Bold</div>
+    </div>
+    <div class="type-sample">
+      <span>Body</span>
+      <div style="font-size: 14px; color: #666;">SF Pro Regular, comfortable</div>
+    </div>
+
+    <div class="section-title">Character</div>
+    <div class="theme-notes">
+      <h4>Sunshine Vibes</h4>
+      <ul>
+        <li>Warm cream background (#FFF9F5)</li>
+        <li>Orange as hero color</li>
+        <li>Soft shadows, rounded corners (16px)</li>
+        <li>Emoji-forward design</li>
+        <li>Feels like: Partiful meets Cal.com</li>
+      </ul>
+    </div>
+
+    <button class="vote-btn">Pick Sunshine</button>
+  </div>
+
+  <!-- THEME B: Electric -->
+  <div class="theme-column theme-b">
+    <div class="theme-header">
+      <div class="theme-name">B. Electric</div>
+      <div class="theme-desc">Bold, dark mode first, high energy</div>
+    </div>
+
+    <div class="phone">
+      <svg viewBox="0 0 375 700" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect fill="#0D0D0D" width="375" height="700"/>
+
+        <!-- Status bar -->
+        <rect fill="#0D0D0D" width="375" height="44"/>
+        <text x="187" y="28" text-anchor="middle" font-size="14" font-weight="600" fill="#FFF">9:41</text>
+
+        <!-- Header -->
+        <text x="20" y="72" font-size="13" fill="#888">Hey Rahul!</text>
+        <text x="20" y="100" font-size="26" font-weight="700" fill="#FFFFFF">Upcoming</text>
+
+        <!-- Card 1: Club Meetup - Gradient border -->
+        <rect x="16" y="140" width="343" height="140" rx="16" fill="#1A1A1A"/>
+        <rect x="17" y="141" width="341" height="138" rx="15" fill="none" stroke="url(#gradient1)" stroke-width="2"/>
+        <rect x="24" y="152" width="48" height="48" rx="12" fill="#22C55E"/>
+        <text x="48" y="184" text-anchor="middle" font-size="24">🏃</text>
+        <text x="84" y="166" font-size="11" font-weight="700" fill="#22C55E">RUN CLUB</text>
+        <text x="84" y="186" font-size="16" font-weight="600" fill="#FFFFFF">City Marathon 2026</text>
+        <text x="84" y="206" font-size="13" fill="#888">Sunday 6 AM • Freedom Park</text>
+
+        <!-- Crew indicator - Electric -->
+        <rect x="24" y="232" width="319" height="36" rx="8" fill="#6366F120"/>
+        <text x="40" y="255" font-size="13" fill="#A5B4FC">👥 Your Crew: 5 friends • Carpool at 5 AM</text>
+
+        <!-- Card 2: Imported Event -->
+        <rect x="16" y="296" width="343" height="120" rx="16" fill="#1A1A1A"/>
+        <rect x="17" y="297" width="341" height="118" rx="15" fill="none" stroke="#EF4444" stroke-width="1"/>
+        <rect x="24" y="308" width="48" height="48" rx="12" fill="url(#redGradient)"/>
+        <text x="48" y="340" text-anchor="middle" font-size="24">🎬</text>
+        <rect x="84" y="308" width="70" height="16" rx="4" fill="#EF4444"/>
+        <text x="90" y="320" font-size="9" fill="white" font-weight="700">BOOKMYSHOW</text>
+        <text x="84" y="346" font-size="16" font-weight="600" fill="#FFFFFF">Dune: Part Three</text>
+        <text x="84" y="366" font-size="13" fill="#888">Friday 9 PM • PVR Orion</text>
+
+        <!-- Card 3: Friend Plan -->
+        <rect x="16" y="432" width="343" height="100" rx="16" fill="#1A1A1A"/>
+        <rect x="17" y="433" width="341" height="98" rx="15" fill="none" stroke="#22C55E" stroke-width="1"/>
+        <rect x="24" y="444" width="48" height="48" rx="12" fill="#22C55E"/>
+        <text x="48" y="476" text-anchor="middle" font-size="24">🏕️</text>
+        <rect x="84" y="444" width="70" height="16" rx="4" fill="#22C55E"/>
+        <text x="92" y="456" font-size="9" fill="white" font-weight="700">FRIEND PLAN</text>
+        <text x="84" y="480" font-size="16" font-weight="600" fill="#FFFFFF">Coorg Camping Trip</text>
+        <text x="84" y="500" font-size="13" fill="#888">Mar 22-24 • 7 confirmed</text>
+
+        <!-- CTA Button - Gradient -->
+        <rect x="100" y="556" width="175" height="44" rx="22" fill="url(#purpleGradient)"/>
+        <text x="187" y="584" text-anchor="middle" font-size="14" font-weight="600" fill="white">+ Create a Plan</text>
+
+        <!-- Tab Bar -->
+        <rect y="620" width="375" height="80" fill="#0D0D0D"/>
+        <line x1="0" y1="620" x2="375" y2="620" stroke="#222" stroke-width="1"/>
+        <circle cx="47" cy="652" r="12" fill="#6366F1"/>
+        <text x="47" y="680" text-anchor="middle" font-size="10" fill="#6366F1">Home</text>
+        <circle cx="140" cy="652" r="12" fill="#333"/>
+        <text x="140" y="680" text-anchor="middle" font-size="10" fill="#666">Clubs</text>
+        <circle cx="234" cy="652" r="12" fill="#333"/>
+        <text x="234" y="680" text-anchor="middle" font-size="10" fill="#666">Plans</text>
+        <circle cx="328" cy="652" r="12" fill="#333"/>
+        <text x="328" y="680" text-anchor="middle" font-size="10" fill="#666">Explore</text>
+
+        <defs>
+          <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#22C55E"/>
+            <stop offset="100%" style="stop-color:#10B981"/>
+          </linearGradient>
+          <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#6366F1"/>
+            <stop offset="100%" style="stop-color:#8B5CF6"/>
+          </linearGradient>
+          <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#EF4444"/>
+            <stop offset="100%" style="stop-color:#DC2626"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="section-title">Colors</div>
+    <div class="swatches">
+      <div>
+        <div class="swatch" style="background: linear-gradient(135deg, #6366F1, #8B5CF6);"></div>
+        <div class="swatch-label">Primary</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #0D0D0D;"></div>
+        <div class="swatch-label">BG</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #22C55E;"></div>
+        <div class="swatch-label">Success</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #EF4444;"></div>
+        <div class="swatch-label">Import</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #FFFFFF;"></div>
+        <div class="swatch-label">Text</div>
+      </div>
+    </div>
+
+    <div class="section-title">Typography</div>
+    <div class="type-sample">
+      <span>Headlines</span>
+      <div style="font-size: 24px; font-weight: 700; color: #fff;">Inter Bold</div>
+    </div>
+    <div class="type-sample">
+      <span>Body</span>
+      <div style="font-size: 14px; color: #888;">Inter Regular, clean</div>
+    </div>
+
+    <div class="section-title">Character</div>
+    <div class="theme-notes">
+      <h4>Electric Vibes</h4>
+      <ul>
+        <li>True black background (#0D0D0D)</li>
+        <li>Purple/violet as primary</li>
+        <li>Gradient borders, glow effects</li>
+        <li>High contrast, bold type</li>
+        <li>Feels like: Discord meets Spotify</li>
+      </ul>
+    </div>
+
+    <button class="vote-btn">Pick Electric</button>
+  </div>
+
+  <!-- THEME C: Soft Social -->
+  <div class="theme-column theme-c">
+    <div class="theme-header">
+      <div class="theme-name">C. Soft Social</div>
+      <div class="theme-desc">Cozy, pastel, approachable</div>
+    </div>
+
+    <div class="phone">
+      <svg viewBox="0 0 375 700" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect fill="#F8F6FF" width="375" height="700"/>
+
+        <!-- Status bar -->
+        <rect fill="#FFFFFF" width="375" height="44"/>
+        <text x="187" y="28" text-anchor="middle" font-size="14" font-weight="600" fill="#333">9:41</text>
+
+        <!-- Header -->
+        <rect fill="#FFFFFF" y="44" width="375" height="80"/>
+        <text x="20" y="72" font-size="13" fill="#9CA3AF">Hey Rahul!</text>
+        <text x="20" y="100" font-size="26" font-weight="700" fill="#1F2937">Upcoming</text>
+
+        <!-- Card 1: Club Meetup -->
+        <rect x="16" y="140" width="343" height="140" rx="20" fill="#FFFFFF"/>
+        <rect x="24" y="152" width="48" height="48" rx="14" fill="#D1FAE5"/>
+        <text x="48" y="184" text-anchor="middle" font-size="24">🏃</text>
+        <text x="84" y="166" font-size="11" font-weight="600" fill="#059669">RUN CLUB</text>
+        <text x="84" y="186" font-size="16" font-weight="600" fill="#1F2937">City Marathon 2026</text>
+        <text x="84" y="206" font-size="13" fill="#6B7280">Sunday 6 AM • Freedom Park</text>
+
+        <!-- Crew indicator - Soft -->
+        <rect x="24" y="232" width="319" height="36" rx="10" fill="#FDF2F8"/>
+        <text x="40" y="255" font-size="13" fill="#DB2777">👥 Your Crew: 5 friends • Carpool at 5 AM</text>
+
+        <!-- Card 2: Imported Event -->
+        <rect x="16" y="296" width="343" height="120" rx="20" fill="#FFFFFF"/>
+        <rect x="24" y="308" width="48" height="48" rx="14" fill="#FEE2E2"/>
+        <text x="48" y="340" text-anchor="middle" font-size="24">🎬</text>
+        <rect x="84" y="308" width="80" height="18" rx="9" fill="#FECACA"/>
+        <text x="92" y="321" font-size="10" fill="#DC2626" font-weight="600">BOOKMYSHOW</text>
+        <text x="84" y="346" font-size="16" font-weight="600" fill="#1F2937">Dune: Part Three</text>
+        <text x="84" y="366" font-size="13" fill="#6B7280">Friday 9 PM • PVR Orion</text>
+
+        <!-- Card 3: Friend Plan -->
+        <rect x="16" y="432" width="343" height="100" rx="20" fill="#FFFFFF"/>
+        <rect x="24" y="444" width="48" height="48" rx="14" fill="#D1FAE5"/>
+        <text x="48" y="476" text-anchor="middle" font-size="24">🏕️</text>
+        <rect x="84" y="444" width="80" height="18" rx="9" fill="#D1FAE5"/>
+        <text x="94" y="457" font-size="10" fill="#059669" font-weight="600">FRIEND PLAN</text>
+        <text x="84" y="480" font-size="16" font-weight="600" fill="#1F2937">Coorg Camping Trip</text>
+        <text x="84" y="500" font-size="13" fill="#6B7280">Mar 22-24 • 7 confirmed</text>
+
+        <!-- CTA Button - Soft gradient -->
+        <rect x="100" y="556" width="175" height="44" rx="22" fill="url(#pinkGradient)"/>
+        <text x="187" y="584" text-anchor="middle" font-size="14" font-weight="600" fill="white">+ Create a Plan</text>
+
+        <!-- Tab Bar -->
+        <rect y="620" width="375" height="80" fill="#FFFFFF"/>
+        <line x1="0" y1="620" x2="375" y2="620" stroke="#F3F4F6" stroke-width="1"/>
+        <rect x="30" y="642" width="34" height="24" rx="12" fill="#FDF2F8"/>
+        <text x="47" y="680" text-anchor="middle" font-size="10" fill="#DB2777">Home</text>
+        <rect x="123" y="642" width="34" height="24" rx="12" fill="#F3F4F6"/>
+        <text x="140" y="680" text-anchor="middle" font-size="10" fill="#9CA3AF">Clubs</text>
+        <rect x="217" y="642" width="34" height="24" rx="12" fill="#F3F4F6"/>
+        <text x="234" y="680" text-anchor="middle" font-size="10" fill="#9CA3AF">Plans</text>
+        <rect x="311" y="642" width="34" height="24" rx="12" fill="#F3F4F6"/>
+        <text x="328" y="680" text-anchor="middle" font-size="10" fill="#9CA3AF">Explore</text>
+
+        <defs>
+          <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#EC4899"/>
+            <stop offset="100%" style="stop-color:#F472B6"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="section-title">Colors</div>
+    <div class="swatches">
+      <div>
+        <div class="swatch" style="background: linear-gradient(135deg, #EC4899, #F472B6);"></div>
+        <div class="swatch-label">Primary</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #F8F6FF;"></div>
+        <div class="swatch-label">BG</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #D1FAE5;"></div>
+        <div class="swatch-label">Success</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #FEE2E2;"></div>
+        <div class="swatch-label">Import</div>
+      </div>
+      <div>
+        <div class="swatch" style="background: #1F2937;"></div>
+        <div class="swatch-label">Text</div>
+      </div>
+    </div>
+
+    <div class="section-title">Typography</div>
+    <div class="type-sample">
+      <span>Headlines</span>
+      <div style="font-size: 24px; font-weight: 700; color: #1F2937;">Nunito Bold</div>
+    </div>
+    <div class="type-sample">
+      <span>Body</span>
+      <div style="font-size: 14px; color: #6B7280;">Nunito Regular, friendly</div>
+    </div>
+
+    <div class="section-title">Character</div>
+    <div class="theme-notes">
+      <h4>Soft Social Vibes</h4>
+      <ul>
+        <li>Lavender-tinted background</li>
+        <li>Pink as hero, pastels everywhere</li>
+        <li>Very rounded (20px corners)</li>
+        <li>Pill-shaped tags, soft shadows</li>
+        <li>Feels like: BeReal meets IRL</li>
+      </ul>
+    </div>
+
+    <button class="vote-btn">Pick Soft Social</button>
+  </div>
+
+</div>
+
+<!-- Design Tokens Comparison -->
+<div class="comparison-section">
+  <h2 class="comparison-title">Design Tokens Comparison</h2>
+  <p class="comparison-subtitle">Quick reference for all three themes</p>
+
+  <table class="tokens-table">
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>A. Sunshine</th>
+        <th>B. Electric</th>
+        <th>C. Soft Social</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Primary Color</td>
+        <td style="color: #FF6B35;">#FF6B35 (Orange)</td>
+        <td style="color: #6366F1;">#6366F1 (Indigo)</td>
+        <td style="color: #EC4899;">#EC4899 (Pink)</td>
+      </tr>
+      <tr>
+        <td>Background</td>
+        <td>#FFF9F5 (Warm cream)</td>
+        <td>#0D0D0D (True black)</td>
+        <td>#F8F6FF (Lavender tint)</td>
+      </tr>
+      <tr>
+        <td>Card Background</td>
+        <td>#FFFFFF</td>
+        <td>#1A1A1A</td>
+        <td>#FFFFFF</td>
+      </tr>
+      <tr>
+        <td>Border Radius</td>
+        <td>16px</td>
+        <td>16px</td>
+        <td>20px</td>
+      </tr>
+      <tr>
+        <td>Font Family</td>
+        <td>SF Pro</td>
+        <td>Inter</td>
+        <td>Nunito</td>
+      </tr>
+      <tr>
+        <td>Shadows</td>
+        <td>Soft, warm</td>
+        <td>None (borders/glow)</td>
+        <td>Very subtle</td>
+      </tr>
+      <tr>
+        <td>Mode</td>
+        <td>Light only</td>
+        <td>Dark first</td>
+        <td>Light only</td>
+      </tr>
+      <tr>
+        <td>Feels Like</td>
+        <td>Partiful + Cal.com</td>
+        <td>Discord + Spotify</td>
+        <td>BeReal + IRL</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="margin-top: 60px; padding: 24px; background: #1a1a1a; border-radius: 12px; border-left: 4px solid #FF6B35;">
+  <h3 style="margin-bottom: 12px;">Next Steps</h3>
+  <p style="color: #aaa; font-size: 14px;">
+    1. Pick a theme direction (or hybrid elements from multiple)<br>
+    2. I'll create detailed low-fidelity wireframes for all screens<br>
+    3. We'll refine the component library and interaction patterns<br>
+    4. Final design system ready for high-fidelity mockups
+  </p>
+</div>
+
+</body>
+</html>
